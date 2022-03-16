@@ -3,11 +3,9 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
   return (
-    <Router>
-      <Route>
-        <Routes path='' />
-      </Route>
-    </Router>
+    <div>
+      Hello World
+    </div>
   );
 }
 
