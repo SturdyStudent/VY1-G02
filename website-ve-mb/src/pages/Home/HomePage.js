@@ -2,7 +2,7 @@ import React from 'react'
 
 function HomePage() {
   return (
-    <div>HomePage Add</div>
+    <h1>HomePage Website Vé Máy Bay</h1>
   )
 }
 
