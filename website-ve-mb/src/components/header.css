@@ -1,0 +1,14 @@
+#sub-header {
+    width: 30%;
+    top: 50%;
+    left: 50%;
+}
+#left{
+    width: 10%;
+}
+#header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    orientation: landscape;
+}
