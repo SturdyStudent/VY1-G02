@@ -1,0 +1,20 @@
+.sideBar{
+    background-color: #4E4E4E;
+    flex: 1;
+    height: calc(100vh - 38px);
+    position: sticky;
+}
+.sidebarListItem{
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sidebarListItem.active, .sidebarListItem:hover{
+    background-color: #303030;
+}

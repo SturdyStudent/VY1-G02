@@ -11,4 +11,6 @@
     flex-direction: row;
     width: 100%;
     orientation: landscape;
+    position:sticky;
+    z-index: 9000;
 }

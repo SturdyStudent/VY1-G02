@@ -1,0 +1,12 @@
+.partner-login{
+    background: url("./assets/images/flight_wallpaper.jpg"); 
+    background-size: cover;
+    min-width: 100px;
+    min-height: 740px;
+}
+.home{
+    background: url("./assets/images/traveloka_pic.png") no-repeat; 
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+}

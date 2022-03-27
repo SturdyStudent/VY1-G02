@@ -1,0 +1,52 @@
+body{
+    
+}
+.bg{
+    /* Full height */
+    position:relative;
+    height: 100%;
+    background-image: url(../../assets/images/flight_wallpaper.jpg);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% auto;
+    background-attachment: fixed;
+    background-color: black;
+}
+#white-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 500px;
+    border-radius: 5%;
+    background-color: white;
+    padding-bottom: 40px;
+}
+#inner-container{
+    position: absolute;
+    top:70px;
+    margin-left:40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+#inner-container div, form, p{
+    font-family: 'Open Sans', sans-serif;
+    color:black;
+}
+#inner-container form{
+    font-weight: 500;
+}
+#inner-container form input{
+    margin-right: 40px;
+    width: 100%;
+    border: solid gray 1px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+.user, .pass{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 30px;
+}

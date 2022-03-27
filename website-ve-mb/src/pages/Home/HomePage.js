@@ -2,7 +2,7 @@ import React from 'react'
 
 function HomePage() {
   return (
-    <h1>HomePage Website Vé Máy Bay</h1>
+    <h1 className='home'>HomePage Website Vé Máy Bay</h1>
   )
 }
 
