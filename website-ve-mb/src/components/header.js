@@ -4,7 +4,7 @@ import './header.css';
 
 function header() {
   return (
-    <div>
+    <div class='background'>
         <div id="header">
             <div id="left"> </div>
             <div id="sub-header">

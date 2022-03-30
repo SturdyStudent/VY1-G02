@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "code quan li api",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "http": "^0.0.1-security",
+    "mssql": "^8.0.2",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.17.0",
+    "tedious": "^14.4.0"
+  }
+}

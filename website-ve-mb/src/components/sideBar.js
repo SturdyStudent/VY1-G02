@@ -1,22 +1,26 @@
 import React from 'react'
 import './sideBar.css'
+import {Flight, ShowChart, MoneyOff} from '@material-ui/icons'
 
 function sideBar() {
   return (
     <div className='sideBar'>
       <div className='sidebarWrapper'>
         <div className='sidebarMenu'>
-          <ul className='sidebarList'>
-            <li className='sidebarListItem'>
+          <div className='sidebarList'>
+            <a className='sidebarListItem'>
+              <Flight />&nbsp;
               Chuyến bay
-            </li>
-            <li className='sidebarListItem'>
+            </a>
+            <a className='sidebarListItem'>
+            <ShowChart />&nbsp;
               Doanh thu
-            </li>
-            <li className='sidebarListItem'>
+            </a>
+            <a className='sidebarListItem'>
+            <MoneyOff/>&nbsp;
               Khuyến mãi
-            </li>
-          </ul>
+            </a>
+          </div>
         </div>
       </div>
     </div>
