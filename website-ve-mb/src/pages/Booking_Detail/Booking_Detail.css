@@ -22,10 +22,10 @@ body{
     justify-content: space-between;
     width: fit-content;
 }
-p{
+#p-booking{
     font-size: 14px;
 }
-form{
+#form-booking{
     margin-right: 36%;
     padding: 10px;
     background-color: white;
@@ -64,7 +64,7 @@ form{
 #a{
     margin-left: 43%;
 }
-a:link, a:visited{
+#a:link, #a:visited{
     padding: 15px 80px 15px 80px;
     background-color: orangered;
     border: 2px solid orangered;

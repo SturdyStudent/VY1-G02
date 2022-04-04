@@ -29,14 +29,14 @@
     margin-right: 40px;
     margin-bottom: 40px;
 }
-#inner-container div, form, p{
+#inner-container div, #form, p{
     font-family: 'Open Sans', sans-serif;
     color:black;
 }
-#inner-container form{
+#inner-container #form{
     font-weight: 500;
 }
-#inner-container form input{
+#inner-container #form input{
     margin-right: 40px;
     width: 100%;
     border: solid gray 1px;

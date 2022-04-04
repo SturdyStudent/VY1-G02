@@ -1,6 +1,5 @@
 import React from 'react'
 import Logo from '../../assets/images/traveloka_pic.png';
-import FlightPic from '../../assets/images/flight_wallpaper.jpg'
 import Header from '../../components/header'
 import './PartnerLoginPage.css'
 
@@ -14,7 +13,7 @@ function PartnerLoginPage() {
                 <div><h3 style={{ "fontSize":"20px"}}>Chào mừng đã quay lại!</h3></div>
                 <p style={{"color":"#454545"}}>Đăng nhập để quản lí những những chuyến bay của bạn từ việc kiểm
                                                  tra lợi nhuận cho đến quản lí chuyển bay</p>
-                <form>
+                <form id='form'>
                     <p>Tên đăng nhập</p>
                     <input type="text" name="user" placeholder='Nhập tên đăng nhập' style={{"height":"40px"}}></input>
                     <p>Mật khẩu</p>
