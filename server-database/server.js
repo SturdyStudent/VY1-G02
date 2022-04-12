@@ -13,7 +13,6 @@
 // // set port, listen for requests
  const PORT = process.env.PORT || 3001;
  app.listen(PORT, () => {
-   console.log(`Server is walking on port ${PORT}.`);
-   //sdfsadf
+   console.log(`Server is flying on port ${PORT}.`);
  });
 
