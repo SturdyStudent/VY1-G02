@@ -14,5 +14,6 @@
  const PORT = process.env.PORT || 3001;
  app.listen(PORT, () => {
    console.log(`Server is walking on port ${PORT}.`);
+  console.log('wat happend');
  });
 
