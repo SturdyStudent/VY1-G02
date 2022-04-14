@@ -9,6 +9,7 @@ import PartnerApp from './PartnerApp';
 import Booking_Detail from './pages/Booking_Detail/Booking_Detail';
 import Booking_Fill_Info from './pages/Booking_Fill_Info/Booking_Fill_Info';
 import Booking_Summary from './pages/Booking_Summary/Booking_Summary';
+import Product from './pages/product';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/booking-detail" element={<Booking_Detail/>}/>
         <Route path="/booking-fill" element={<Booking_Fill_Info/>}/>
         <Route path="/booking-summary" element={<Booking_Summary/>}/>
+        <Route path="/product" element={<Product/>}/>
       </Routes>
   </Router> 
   );

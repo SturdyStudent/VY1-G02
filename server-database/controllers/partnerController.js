@@ -4,7 +4,7 @@ const sql = require('mssql');
 async function getFlights(){//phải chờ chạy xong thì mới vào hàm
     try{
         let pool = await sql.connect(config);
-        let flights = await pool.request().query("SELECT * FROM HanhKhach");
+        let flights = await pool.request().query("SELECT * FROM ChuyenBay");
         return flights.recordsets;
     }
     catch(error){
@@ -16,7 +16,7 @@ async function getFlightById(flightId){
         let pool = await sql.connect(config);
         let flight = await pool.request()
             .input('input_parameter', sql.Int, flightId)
-            .query("SELECT * FROM HanhKhach WHERE MaHanhKhach = @input_parameter");
+            .query("SELECT * FROM ChuyenBay WHERE MaChuyenBay = @input_parameter");
         return flight.recordsets;
     }
     catch(err){
