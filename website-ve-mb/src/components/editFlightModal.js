@@ -1,13 +1,14 @@
-import React, {useState, useEffect} from 'react'
-import './FlightModal.css'
+import React, {useState, useEffect} from 'react';
+import './FlightModal.css';
 import axios from 'axios';
 
-function FlightModal({closeModal}) {
-  
+const EditFlightModal = ({flightParams}) => {
+
   const url = "http://localhost:3001/api/locations";
-  const addFlightUrl = "http://localhost:3001/api/partner/getFlights";
+  const getFlighstUrl = `http://localhost:3001/api/partner/getFlights/${flightParams}`;
   
   const [locations, setLocations] = useState(null);
+  const [flightInfo, setFlightInfo] = useState(null);
   const [MaChuyenBay, setMaChuyenBay] = useState();
   const [SoHieuChuyenBay, setSoHieuChuyenBay] = useState();
   const [DiaDiemKhoiHanh, setDiaDiemKhoiHanh] = useState();
@@ -36,9 +37,26 @@ function FlightModal({closeModal}) {
   const handleTrangThai = e => setTrangThai(e.target.value);
   const handleHangBay = e => setHangBay(e.target.value);
 
-  const handleAddFlight = (e) =>{
-    axios.post(addFlightUrl, {
-      MaChuyenBay: `${MaChuyenBay}`,
+  const handleGetFlights = (flightInfo) =>{
+    var gioDen = flightInfo.NgayGioKhoiHanh;
+    var gioDi = flightInfo.NgayGioDen;
+    setSoHieuChuyenBay(flightInfo.SoHieuChuyenBay);
+    setDiaDiemKhoiHanh(flightInfo.DiaDiemKhoiHanh);
+    setDiaDiemDen(flightInfo.DiaDiemDen);
+    setNgayGioKhoiHanh(gioDi.slice(0, -8));
+    setNgayGioDen(gioDen.slice(0, -8));
+    setTongSoVe(flightInfo.TongSoVe);
+    setGiaVe(flightInfo.GiaVe);
+    setSoDoGheNgoi(flightInfo.SoDoGheNgoi);
+    setKhoangCachGhe(flightInfo.KhoangCachGhe);
+    setLoaiMayBay(flightInfo.LoaiMayBay);
+    setTrangThai(flightInfo.TrangThai);
+    setHangBay(flightInfo.HangBay);
+  }
+
+  const handleEditFlight = (e) =>{
+    axios.put(getFlighstUrl, {
+      flightId: `${flightParams}`,
       SoHieuChuyenBay: `${SoHieuChuyenBay}`,
       DiaDiemKhoiHanh: `${DiaDiemKhoiHanh}`,
       DiaDiemDen: `${DiaDiemDen}`,
@@ -52,7 +70,6 @@ function FlightModal({closeModal}) {
       TrangThai: `${TrangThai}`,
       HangBay: `${HangBay}`
     }).then((res)=>{
-      closeModal = false;
       window.location.reload();
     }).catch((error)=>{
       console.log(error);
@@ -65,17 +82,22 @@ function FlightModal({closeModal}) {
           setLocations(response.data);
       })
   }, [url])
-
+  useEffect(()=>{
+    axios.get(getFlighstUrl)
+    .then(response => {
+       handleGetFlights(response.data[0]);
+    })
+}, [url])
   return (
     <div class="modal-background">
-      <div class='modal-container'>
+      <div class='modal-container' style={{"width":"100%"}}>
         <form id='modal-form'>
-          <div id='title'><h2><b>Thêm chuyến bay</b></h2></div>
+          <div id='title' style={{"textAlign":"center"}}><h2><b>Cập nhật chuyến bay</b></h2></div>
           <table class="table">
             <tr class="tr">
               <td class="td">
                 <div>Mã chuyến bay:</div>
-                <input type="text" maxLength={10} value={MaChuyenBay} onChange={handleMaChuyenBay}></input>
+                <input type="text" maxLength={10} value={flightParams}></input>
               </td>
               <td class="td">
                 <div>Trạng thái chuyến bay:</div>
@@ -153,7 +175,7 @@ function FlightModal({closeModal}) {
             </tr>
           </table>
           <hr style={{"height":"1.5px","backgroundColor":"gray"}}></hr>
-          <h2><b>Thêm Hạng Vé</b></h2>
+          <h2 style={{"textAlign":"center"}}><b>Cập nhật Hạng Vé</b></h2>
           <table class="table">
             <tr class="tr">
               <td class="td">
@@ -228,14 +250,14 @@ function FlightModal({closeModal}) {
               </td>
             </tr>
           </table>
-          <div class="button-modal">
-            <input type="submit" value="LƯU" onClick={handleAddFlight} id="btnSubmit"/>
-            <button class="cancel" onClick={() => closeModal(false)} id="btnCancel">HỦY</button>
-          </div>
+          <div class="button-modal" style={{"zIndex":"1000"}}>
+                        <input type="submit" value="LƯU" onClick={handleEditFlight} id="btnSubmit"/>
+                        <button class="cancel" id="btnCancel">HỦY</button>
+                      </div>
         </form>
       </div>
     </div>
   )
 }
 
-export default FlightModal
+export default EditFlightModal

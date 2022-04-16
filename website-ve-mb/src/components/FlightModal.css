@@ -7,13 +7,16 @@
     display: flex;
 }
 .modal-container{
-    background-color: white;
+    border: #979797;
+    border-width: 2px;
+    background-color: rgb(221, 221, 221);
     position: absolute;
-    top: 350px;
+    top: 970px;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 1200px;
-    height: 600px;
+    height: 1900px;
+    z-index: 100;
 }
 #title{
     background-color: #FF8000;
@@ -44,7 +47,7 @@
     text-align: left;
     display: flex;
 }
-.button-modal button{
+.button-modal button, .button-modal input{
     background-color: #FF8000;
     color: white;
     font-weight: bold;
@@ -60,6 +63,21 @@
     text-align: right;
     padding-right: 100px;
 }
+#btnSubmit:hover{
+    background-color: #ffb463;
+}
+#btnCancel:hover{
+    background-color: #d6d6d6;
+}
 .button-modal .cancel{
     background-color: #979797;
+}
+#input-container{
+    position: relative;
+}
+#input-container span{
+    position: absolute;
+    width: 300px;
+    text-align: right;
+    top: 14px;
 }

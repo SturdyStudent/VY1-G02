@@ -21,6 +21,9 @@
     padding: 10px;
     border-radius: 8px;
 }
+#btnCreate:hover{
+    background-color: #ffbb77;
+}
  table, tr, th, td{
     border: solid black 1px;
     border-collapse: collapse;
@@ -56,6 +59,9 @@ td div button{
     padding-left: 8px;
     padding-right: 8px;
     border-radius: 10px;
+}
+td div button:hover{
+    background-color: #bb9166;
 }
 td{
     padding: 10px;

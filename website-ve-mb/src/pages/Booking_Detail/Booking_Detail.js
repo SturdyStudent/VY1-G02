@@ -49,7 +49,7 @@ function Booking_Detail() {
                 </table>
             </form>
             <br/><br/>
-            <a href="TienNghiChuyenBay.html" id='a'>Tiếp tục</a>
+            <a href="TienNghiChuyenBay.html" id='a'>forward</a>
         </div>
     </div>
   )

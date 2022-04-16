@@ -1,0 +1,266 @@
+drop database QLChuyenBay
+go
+create database QLChuyenBay
+go
+/*
+Created		4/2/2022
+Modified		4/2/2022
+Project		
+Model			
+Company		
+Author		
+Version		
+Database		MS SQL 2000 
+*/
+use QLChuyenBay
+Create table [ChuyenBay]
+(
+	[MaChuyenBay] Integer NOT NULL,
+	[SoHieuChuyenBay] Varchar(10) NULL,
+	[DiaDiemKhoiHanh] Text NULL,
+	[DiaDiemDen] Text NULL,
+	[NgayGioKhoiHanh] Datetime NULL,
+	[NgayGioDen] Datetime NULL,
+	[TongSoVe] Smallint NULL,
+	[GiaVe] Integer NULL,
+	[SoDoGheNgoi] Varchar(10) NULL,
+	[KhoangCachGhe] Tinyint NULL,
+	[LoaiMayBay] Varchar(10) NULL,
+    [TrangThai] nVarchar(30) NOT NULL,
+	[HangBay] varchar(10) Not Null
+Primary Key ([MaChuyenBay])
+) 
+go
+
+Create table [LoaiHangVe]
+(
+	[MaLoaiHangVe] Char(10) NOT NULL,
+	[PhoThong] Integer NULL,
+	[UuDaiPhoThong] Ntext NULL,
+	[SoVePhoThong] Smallint NULL,
+	[PhoThongDacBiet] Integer NULL,
+	[UuDaiDacBiet] Ntext NULL,
+	[SoVeDacBiet] Smallint NULL,
+	[ThuongGia] Integer NULL,
+	[UuDaiThuongGia] Ntext NULL,
+	[SoVeThuongGia] Smallint NULL,
+	[HangNhat] Integer NULL,
+	[UuDaiHangNhat] Ntext NULL,
+	[SoVeHangNhat] Smallint NULL,
+	[MaChuyenBay] Integer NOT NULL,
+Primary Key ([MaLoaiHangVe],[MaChuyenBay])
+) 
+go
+
+Create table [ThongTinHanhKhach]
+(
+	[MaHanhKhach] Varchar(10) NOT NULL,
+	[DanhXung] Nvarchar(10) NULL,
+	[Ho] Nvarchar(20) NULL,
+	[TenDemVaTen] Nvarchar(30) NULL,
+	[NgaySinh] Datetime NULL,
+	[QuocTich] Nvarchar(40) NULL,
+	[SoHanhLiMuaThem] Tinyint NULL,
+	[MaNguoiLienHe] Varchar(10) NOT NULL,
+	[MaChuyenBay] Char(10) NOT NULL,
+Primary Key ([MaHanhKhach],[MaNguoiLienHe],[MaChuyenBay])
+) 
+go
+
+Create table [GiaHanhLiMuaThem]
+(
+	[SoKi] Char(10) NULL,
+	[GiaTien] Integer NULL,
+	[MaHangBay] Varchar(10) NOT NULL,
+	[MaBangGiaHanhLi] Char(10) NOT NULL,
+Primary Key ([MaHangBay],[MaBangGiaHanhLi])
+) 
+go
+
+Create table [BangGiaHanhLi]
+(
+	[MaBangGiaHanhLi] Char(10) NOT NULL,
+	[SoHanhLiXachTay] Tinyint NULL,
+	[MaHangBay] Varchar(10) NOT NULL,
+Primary Key ([MaBangGiaHanhLi],[MaHangBay])
+) 
+go
+
+Create table [HangBay]
+(
+	[MaHangBay] Varchar(10) NOT NULL,
+	[TenHangBay] Nvarchar(50) NOT NULL,
+	[HinhAnhHangBay] Image NOT NULL,
+	[TenDangNhap] Varchar(20) NOI NULL,
+	[MatKhau] Varchar(20) NOT NULL,
+Primary Key ([MaHangBay])
+) 
+go
+
+Create table [DoanhThuTheoThang]
+(
+	[MaBangDoanhThu] Varchar(10) NOT NULL,
+	[SoVeBanRa] Integer NULL,
+	[SoChuyenBay] Integer NULL,
+	[LoiNhuanBanVe] Integer NULL,
+	[TongTienThuDuoc] Integer NULL,
+	[ThangHienTai] Varchar(10) NULL,
+	[MaHangBay] Varchar(10) NOT NULL,
+Primary Key ([MaBangDoanhThu],[MaHangBay])
+) 
+go
+
+Create table [NguoiLienHe]
+(
+	[MaNguoiLienHe] Varchar(10) NOT NULL,
+	[TenDemVaTen] Nvarchar(30) NOT NULL,
+	[Ho] Nvarchar(20) NOT NULL,
+	[SoDienThoai] Varchar(15) NOT NULL,
+	[Email] Varchar(50) NOT NULL,
+	[MaQuocGia] Varchar(10) NOT NULL,
+	[MaChuyenBay] Char(10) NOT NULL,
+Primary Key ([MaNguoiLienHe],[MaChuyenBay])
+) 
+go
+
+Create table [MaKhuyenMai]
+(
+	[MaKhuyenMai] Varchar(10) NOT NULL,
+	[ThoiHanKhuyenMai] Datetime NULL,
+	[TinhTrangMa] Bit NULL,
+	[PhanTramGiamGia] Tinyint NULL,
+	[SoTienGiamGia] Integer NULL,
+	[MaChuyenBay] Integer NOT NULL,
+	[MaHangBay] Varchar(10) NOT NULL,
+Primary Key ([MaKhuyenMai],[MaChuyenBay],[MaHangBay])
+) 
+go
+
+Create table [VeDienTu]
+(
+	[SoNguoiLon] Tinyint NULL,
+	[SoTreEm] Tinyint NULL,
+	[SoEmBe] Tinyint NULL,
+	[MaChuyenBay] Integer NOT NULL,
+	[MaNguoiLienHe] Varchar(10) NOT NULL
+Primary Key ([MaChuyenBay], [MaNguoiLienHe])
+) 
+go
+Create table [DiaDiem]
+(
+	[MaDiaDiem] Char(4),
+	[TenDiaDiem] NVarchar(50),
+	[TenSanBay] NVarchar(50)
+)
+go
+
+Alter table [VeDienTu] add  foreign key([MaChuyenBay]) references [ChuyenBay] ([MaChuyenBay])  on update no action on delete no action 
+go
+Alter table [LoaiHangVe] add  foreign key([MaChuyenBay]) references [ChuyenBay] ([MaChuyenBay])  on update no action on delete no action 
+go
+Alter table [GiaHanhLiMuaThem] add  foreign key([MaBangGiaHanhLi],[MaHangBay]) references [BangGiaHanhLi] ([MaBangGiaHanhLi],[MaHangBay])  on update no action on delete no action 
+go
+Alter table [MaKhuyenMai] add  foreign key([MaHangBay]) references [HangBay] ([MaHangBay])  on update no action on delete no action 
+go
+Alter table [DoanhThuTheoThang] add  foreign key([MaHangBay]) references [HangBay] ([MaHangBay])  on update no action on delete no action 
+go
+Alter table [BangGiaHanhLi] add  foreign key([MaHangBay]) references [HangBay] ([MaHangBay])  on update no action on delete no action 
+go
+Alter table [ThongTinHanhKhach] add  foreign key([MaNguoiLienHe],[MaChuyenBay]) references [NguoiLienHe] ([MaNguoiLienHe],[MaChuyenBay])  on update no action on delete no action 
+go
+Alter table [MaKhuyenMai] add  foreign key([MaChuyenBay]) references [VeDienTu] ([MaChuyenBay])  on update no action on delete no action 
+go
+Alter table [NguoiLienHe] add  foreign key([MaChuyenBay]) references [VeDienTu] ([MaChuyenBay])  on update no action on delete no action 
+go
+Alter table [ChuyenBay] add foreign key([HangBay]) references [HangBay] ([MaHangBay]) on update no action on delete no action
+go
+
+insert into ChuyenBay(MaChuyenBay, SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('6', 'OZ 734', N'Hong Kong', 'Viet Nam', '2013-12-02 00:00:00.000', '2013-12-02 00:00:00.000', 100, 100000, 'AIR123', 123, 'Boring 747', N'Đã cất cánh', 'vietjet')
+insert into ChuyenBay(MaChuyenBay, SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('7', 'OZ 734', N'Trung Quốc', 'Viet Nam', '2013-12-02 00:00:00.000', '2013-12-02 00:00:00.000', 100, 100000, 'AIR123', 123, 'Boring 747', N'Đã cất cánh', 'vietjet')
+insert into ChuyenBay(MaChuyenBay, SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('8', 'OZ 734', N'Phú Quốc', 'Viet Nam', '2013-12-02 00:00:00.000', '2013-12-02 00:00:00.000', 100, 100000, 'AIR123', 123, 'Boring 747', N'Đã cất cánh', 'vietjet')
+insert into ChuyenBay(MaChuyenBay, SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('9', 'OZ 734', N'Thượng Hải', 'Viet Nam', '2013-12-02 00:00:00.000', '2013-12-02 00:00:00.000', 100, 100000, 'AIR123', 123, 'Boring 747', N'Đã cất cánh', 'vietjet')
+insert into ChuyenBay(MaChuyenBay, SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('10', 'OZ 734', N'Đài Loan', 'Viet Nam', '2013-12-02 00:00:00.000', '2013-12-02 00:00:00.000', 100, 100000, 'AIR123', 123, 'Boring 747', N'Đã cất cánh', 'vietjet')
+insert into ChuyenBay(MaChuyenBay, SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('11', 'OZ 734', N'Nhật Bản', 'Viet Nam', '2013-12-02 00:00:00.000', '2013-12-02 00:00:00.000', 100, 100000, 'AIR123', 123, 'Boring 747', N'Đã cất cánh', 'vietjet')
+insert into ChuyenBay(MaChuyenBay, SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('12', 'OZ 734', 'Vatican', 'Viet Nam', '2013-12-02 00:00:00.000', '2013-12-02 00:00:00.000', 100, 100000, 'AIR123', 123, 'Boring 747', N'Đã cất cánh', 'vietjet')
+insert into ChuyenBay(MaChuyenBay, SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('13', 'OZ 734', 'Bhutan', 'Viet Nam', '2013-12-02 00:00:00.000', '2013-12-02 00:00:00.000', 100, 100000, 'AIR123', 123, 'Boring 747', N'Đã cất cánh', 'vietjet')
+insert into ChuyenBay(MaChuyenBay, SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('14', 'OZ 734', 'America', 'Viet Nam', '2013-12-02 00:00:00.000', '2013-12-02 00:00:00.000', 100, 100000, 'AIR123', 123, 'Boring 747', N'Đã cất cánh', 'vietjet')
+
+insert into DiaDiem(MaDiaDiem, TenDiaDiem, TenSanBay)
+values ('DAD', N'Đà Nẵng, Việt Nam', N'Sân bay Đà Nẵng')
+insert into DiaDiem(MaDiaDiem, TenDiaDiem, TenSanBay)
+values ('SGN', N'Sài Gòn, Việt Nam', N'Sân bay Tân Sơn Nhất')
+insert into DiaDiem(MaDiaDiem, TenDiaDiem, TenSanBay)
+values ('HAN', N'Hà Nội, Việt Nam', N'Sân bay Nội Bài')
+insert into DiaDiem(MaDiaDiem, TenDiaDiem, TenSanBay)
+values ('DLI', N'Đà Lạt, Việt Nam', N'Sân bay Liên Khương')
+insert into DiaDiem(MaDiaDiem, TenDiaDiem, TenSanBay)
+values ('SINA', N'Singapore, Singapore', N'Sân bay Singapore')
+insert into DiaDiem(MaDiaDiem, TenDiaDiem, TenSanBay)
+values ('SYD', N'Sydney, Úc', N'Sân bay quốc tế Sydney')
+insert into DiaDiem(MaDiaDiem, TenDiaDiem, TenSanBay)
+values ('BKKA', N'Bangkok, Thái Lan', N'Sân bay Bangkok')
+insert into DiaDiem(MaDiaDiem, TenDiaDiem, TenSanBay)
+values ('MNL', N'Manila, Philippines', N'Sân bay quốc tế Ninoy Aquino')
+insert into DiaDiem(MaDiaDiem, TenDiaDiem, TenSanBay)
+values ('OSAA', N'Osaka, Nhật Bản', N'Sân bay Osaka')
+
+create PROCEDURE dbo.spChuyenBay_addFlights
+	-- Add the parameters for the stored procedure here
+	@MaChuyenBay Char(10),
+	@SoHieuChuyenBay Varchar(10),
+	@DiaDiemKhoiHanh Nvarchar(200),
+	@DiaDiemDen Nvarchar(200),
+	@NgayGioKhoiHanh datetime,
+	@NgayGioDen datetime,
+	@TongSoVe smallint,
+	@GiaVe int,
+	@SoDoGheNgoi varchar(10),
+	@KhoangCachGhe tinyint,
+	@LoaiMayBay varchar(10),
+	@TrangThai nvarchar(50),
+	@HangBay nvarchar(50)
+AS
+BEGIN
+	insert into ChuyenBay(MaChuyenBay, SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, 
+	NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+	values (@MaChuyenBay, @SoHieuChuyenBay, @DiaDiemKhoiHanh, @DiaDiemDen, @NgayGioKhoiHanh, @NgayGioDen, @TongSoVe, 
+	@GiaVe, @SoDoGheNgoi, @KhoangCachGhe, @LoaiMayBay, @TrangThai, @HangBay)
+END
+GO
+exec dbo.spChuyenBay_addFlights '1', '132',N'Núi Bà Trưng',N'Núi bà Nhị','2013-12-02 00:00:00.000', 
+'2014-12-12 00:00:00.000', 102, 14000, '142', 132, 'Boeing848',	N'Đã cất cánh', N'Vietnam Airlines'
+go
+
+create PROCEDURE dbo.spChuyenBay_updateFlights
+	-- Add the parameters for the stored procedure here
+	@flightId Char(10),
+	@SoHieuChuyenBay Varchar(10),
+	@DiaDiemKhoiHanh Nvarchar(200),
+	@DiaDiemDen Nvarchar(200),
+	@NgayGioKhoiHanh datetime,
+	@NgayGioDen datetime,
+	@TongSoVe smallint,
+	@GiaVe int,
+	@SoDoGheNgoi varchar(10),
+	@KhoangCachGhe tinyint,
+	@LoaiMayBay varchar(10),
+	@TrangThai nvarchar(50),
+	@HangBay nvarchar(50)
+AS
+BEGIN
+	update ChuyenBay
+	set SoHieuChuyenBay = @SoHieuChuyenBay, DiaDiemKhoiHanh = @DiaDiemKhoiHanh, DiaDiemDen = @DiaDiemDen, 
+	NgayGioKhoiHanh = @NgayGioKhoiHanh, NgayGioDen = @NgayGioDen, TongSoVe = @TongSoVe, GiaVe = @GiaVe, SoDoGheNgoi = @SoDoGheNgoi,
+	KhoangCachGhe = @KhoangCachGhe, LoaiMayBay = @LoaiMayBay, TrangThai = @TrangThai, HangBay = @HangBay
+	where MaChuyenBay = @flightId
+END
+GO
