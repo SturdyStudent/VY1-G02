@@ -5,6 +5,7 @@ import Payment from './pages/Payment/PaymentPage';
 import FlightSearchingPage from './pages/FlightSearching/FlightSearchingPage';
 import CreateFlight from './pages/CreateFlight/CreateFlight'; 
 import PartnerLoginPage from './pages/PartnerLoginPage/PartnerLoginPage';
+import PartnerSignup from './pages/PartnerSignupPage/PartnerSignup';
 import PartnerApp from './PartnerApp';
 import Booking_Detail from './pages/Booking_Detail/Booking_Detail';
 import Booking_Fill_Info from './pages/Booking_Fill_Info/Booking_Fill_Info';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/flight-search" element={<FlightSearchingPage/>}/>
         <Route path="/create-flight" element={<CreateFlight/>}/>
         <Route path="/partner-login" element={<PartnerLoginPage/>}/>
+        <Route path="/partner-signup" element={<PartnerSignup/>}/>
         <Route path="/partner" element={<PartnerApp/>}/>
         <Route path="/booking-detail" element={<Booking_Detail/>}/>
         <Route path="/booking-fill" element={<Booking_Fill_Info/>}/>

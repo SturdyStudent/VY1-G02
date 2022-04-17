@@ -9,6 +9,8 @@ import Fade from '@material-ui/core/Fade';
 
 const CreateFlight = () => {
   const [openModal, setIsOpenModal] = useState(false);
+  const [partnerName, setPartnerName] = useState('');
+  const [partnerId, setPartnerId] = useState('');
   const [openEditModal, setIsOpenEditModal] = useState(false);
   const [show, setShow] = useState(false);
   const [flightId, setFlightId] = useState('');
@@ -19,8 +21,8 @@ const CreateFlight = () => {
     setFlightId(flightId);
   }
 
-  const url = "http://localhost:3001/api/partner/getFlights";
-
+  const partnerJson = JSON.parse(localStorage.getItem("LOGIN_INFORMATION"));
+  const url = `http://localhost:3001/api/partner/getPartnerFlights/${partnerJson.MaHangBay}`;
   useEffect(()=>{
       axios.get(url)
       .then(response => {
@@ -41,7 +43,7 @@ const CreateFlight = () => {
       </div>
       {openModal &&  <FlightModal closeModal={setIsOpenModal} />}
       <hr style={{"height":"1px", "backgroundColor":"#707070"}}></hr>
-      <div style={{"fontSize":"18px"}}><h2><b>Danh sách chuyến bay</b></h2></div>
+      <div style={{"fontSize":"18px"}}><h2><b>Danh sách chuyến bay của {partnerJson.TenHangBay}</b></h2></div>
       <table>
         <tr>
           <th>Ngày thêm</th>

@@ -22,6 +22,17 @@
     background-color: white;
     padding-bottom: 40px;
 }
+#white-container-signup{
+    position: absolute;
+    top: 570px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 960px;
+    border-radius: 5%;
+    background-color: white;
+    padding-bottom: 40px;
+}
 #inner-container{
     position: absolute;
     top:70px;
@@ -42,6 +53,7 @@
     border: solid gray 1px;
     box-sizing: border-box;
     padding-left: 10px;
+    height: 40px;
 }
 .user, .pass{
     padding-top: 10px;

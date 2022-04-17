@@ -1,10 +1,14 @@
 const partnerController = require('../controllers/partnerController');
 const express = require("express");
-const { append } = require('express/lib/response');
 
 const route = express.Router();
 
 //trả về mọi dữ liệu chuyến bay
+route.get("/getPartnerFlights/:id", (req, res)=>{
+    partnerController.getPartnerFlights(req.params.id).then(result => {
+        res.send(result[0]);
+    })
+})
 route.get("/getFlights",(req, res)=>{
     partnerController.getFlights().then(result => {
         res.send(result[0]);
@@ -19,7 +23,7 @@ route.post("/getFlights", (req, res)=>{
     let order = {...req.body}
 
     partnerController.addFlight(order).then(result =>{
-        res.status(201).send(result);
+        res.status(201).send(order);
     })
 })
 route.put("/getFlights/:id", (req, res)=>{
@@ -32,7 +36,35 @@ route.put("/getFlights/:id", (req, res)=>{
 route.delete("/getFlights/:id", (req, res)=>{
     partnerController.deleteFlight(req.params.id).then(result =>{
         res.status(202).send(result);
-        console.log("something was here");
+    })
+})
+route.get("/getSeatClass/:id", (req, res)=>{
+    partnerController.getSeatClassById(req.params.id).then(result => {
+        res.send(result[0]);
+    })
+})
+route.get("/getLocations",(req, res)=>{
+    partnerController.getLocations().then(result => {
+        res.send(result[0]);
+    })
+});
+route.get("/getPartners", (req, res)=>{
+    partnerController.getPartners().then(result=>{
+        res.send(result[0]);
+    })
+})
+route.post("/getPartners", (req, res)=>{
+    let order = {...req.body}
+
+    partnerController.addPartner(order).then(result =>{
+        res.status(201).send(result);
+    })
+})
+route.post("/partner-login", (req, res)=>{
+    let order = {...req.body}
+
+    partnerController.loginPartner(order).then(result =>{
+        res.status(203).send(result[0][0]);
     })
 })
 module.exports = route;

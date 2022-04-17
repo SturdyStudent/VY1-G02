@@ -4,8 +4,9 @@ import axios from 'axios';
 
 const EditFlightModal = ({flightParams}) => {
 
-  const url = "http://localhost:3001/api/locations";
+  const url = "http://localhost:3001/api/partner/getLocations";
   const getFlighstUrl = `http://localhost:3001/api/partner/getFlights/${flightParams}`;
+  const getSeatClassUrl = `http://localhost:3001/api/partner/getSeatClass/${flightParams}`;
   
   const [locations, setLocations] = useState(null);
   const [flightInfo, setFlightInfo] = useState(null);
@@ -22,6 +23,18 @@ const EditFlightModal = ({flightParams}) => {
   const [LoaiMayBay, setLoaiMayBay] = useState();
   const [TrangThai, setTrangThai] = useState();
   const [HangBay, setHangBay] = useState();
+  const [PhoThong, setPhoThong] = useState();
+  const [UuDaiPhoThong, setUuDaiPhoThong] = useState();
+  const [SoVePhoThong, setSoVePhoThong] = useState();
+  const [PhoThongDacBiet, setPhoThongDacBiet] = useState();
+  const [UuDaiDacBiet, setUuDaiDacBiet] = useState();
+  const [SoVeDacBiet, setSoVeDacBiet] = useState();
+  const [ThuongGia, setThuongGia] = useState();
+  const [UuDaiThuongGia, setUuDaiThuongGia] = useState();
+  const [SoVeThuongGia, setSoVeThuongGia] = useState();
+  const [HangNhat, setHangNhat] = useState();
+  const [UuDaiHangNhat, setUuDaiHangNhat] = useState();
+  const [SoVeHangNhat, setSoVeHangNhat] = useState();
 
   const handleMaChuyenBay = e => setMaChuyenBay(e.target.value);
   const handleSoHieuChuyenBay = e => setSoHieuChuyenBay(e.target.value);
@@ -36,6 +49,18 @@ const EditFlightModal = ({flightParams}) => {
   const handleLoaiMayBay = e => setLoaiMayBay(e.target.value);
   const handleTrangThai = e => setTrangThai(e.target.value);
   const handleHangBay = e => setHangBay(e.target.value);
+  const handlePhoThong = e => setPhoThong(e.target.value);
+  const handleUuDaiPhoThong = e => setUuDaiPhoThong(e.target.value);
+  const handleSoVePhoThong = e => setSoVePhoThong(e.target.value);
+  const handlePhoThongDacBiet = e => setPhoThongDacBiet(e.target.value);
+  const handleUuDaiDacBiet = e => setUuDaiDacBiet(e.target.value);
+  const handleSoVeDacBiet = e => setSoVeDacBiet(e.target.value);
+  const handleThuongGia = e => setThuongGia(e.target.value);
+  const handleUuDaiThuongGia = e => setUuDaiThuongGia(e.target.value);
+  const handleSoVeThuongGia = e => setSoVeThuongGia(e.target.value);
+  const handleHangNhat = e => setHangNhat(e.target.value);
+  const handleUuDaiHangNhat = e => setUuDaiHangNhat(e.target.value);
+  const handleSoVeHangNhat = e => setSoVeHangNhat(e.target.value);
 
   const handleGetFlights = (flightInfo) =>{
     var gioDen = flightInfo.NgayGioKhoiHanh;
@@ -53,6 +78,20 @@ const EditFlightModal = ({flightParams}) => {
     setTrangThai(flightInfo.TrangThai);
     setHangBay(flightInfo.HangBay);
   }
+  const handleGetSeatClass = (seatInfo) =>{
+    setPhoThong(seatInfo.PhoThong);
+    setSoVePhoThong(seatInfo.SoVePhoThong);
+    setUuDaiPhoThong(seatInfo.UuDaiPhoThong);
+    setPhoThongDacBiet(seatInfo.PhoThongDacBiet);
+    setSoVeDacBiet(seatInfo.SoVeDacBiet);
+    setUuDaiDacBiet(seatInfo.UuDaiDacBiet);
+    setThuongGia(seatInfo.ThuongGia);
+    setSoVeThuongGia(seatInfo.SoVeThuongGia);
+    setUuDaiThuongGia(seatInfo.UuDaiThuongGia);
+    setHangNhat(seatInfo.HangNhat);
+    setSoVeHangNhat(seatInfo.SoVeHangNhat);
+    setUuDaiHangNhat(seatInfo.UuDaiHangNhat);
+  }
 
   const handleEditFlight = (e) =>{
     axios.put(getFlighstUrl, {
@@ -68,7 +107,19 @@ const EditFlightModal = ({flightParams}) => {
       KhoangCachGhe: Number(KhoangCachGhe),
       LoaiMayBay: `${LoaiMayBay}`,
       TrangThai: `${TrangThai}`,
-      HangBay: `${HangBay}`
+      HangBay: `${HangBay}`,
+      PhoThong: Number(PhoThong),
+      UuDaiPhoThong : `${UuDaiPhoThong}`,
+      SoVePhoThong : Number(SoVePhoThong),
+      PhoThongDacBiet : Number(PhoThongDacBiet),
+      UuDaiDacBiet: `${UuDaiDacBiet}`,
+      SoVeDacBiet: Number(SoVeDacBiet),
+      ThuongGia: Number(ThuongGia),
+      UuDaiThuongGia: `${UuDaiThuongGia}`,
+      SoVeThuongGia: Number(SoVeThuongGia),
+      HangNhat: Number(HangNhat),
+      UuDaiHangNhat: `${UuDaiHangNhat}`,
+      SoVeHangNhat: Number(SoVeHangNhat)
     }).then((res)=>{
       window.location.reload();
     }).catch((error)=>{
@@ -87,6 +138,12 @@ const EditFlightModal = ({flightParams}) => {
     .then(response => {
        handleGetFlights(response.data[0]);
     })
+}, [url])
+useEffect(()=>{
+  axios.get(getSeatClassUrl)
+  .then(response => {
+     handleGetSeatClass(response.data[0]);
+  })
 }, [url])
   return (
     <div class="modal-background">
@@ -128,6 +185,7 @@ const EditFlightModal = ({flightParams}) => {
               <td class="td">
                 <div>Địa điểm khởi hành:</div><br/>
                   <select style={{"width":"200px", "height":"30px"}} onChange={handleDiaDiemKhoiHanh}>
+                    <option value={DiaDiemKhoiHanh}>Không xác định</option>
                     {locations &&  (locations.map(location =>
                       <option value={location.MaDiaDiem}>{location.TenDiaDiem}</option>
                     ))}
@@ -136,6 +194,7 @@ const EditFlightModal = ({flightParams}) => {
               <td class="td">
                 <div>Địa điểm đến:</div><br/>
                 <select style={{"width":"200px", "height":"30px"}} onChange={handleDiaDiemDen}>
+                    <option value={DiaDiemDen}>Không xác định</option>
                     {locations &&  (locations.map(location =>
                       <option value={location.MaDiaDiem}>{location.TenDiaDiem}</option>
                     ))}
@@ -180,17 +239,17 @@ const EditFlightModal = ({flightParams}) => {
             <tr class="tr">
               <td class="td">
                 <div>Gía vé phổ thông:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={PhoThong} onChange={handlePhoThong}></input>
               </td>
               <td class="td">
                 <div>Số vé phổ thông:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={SoVePhoThong} onChange={handleSoVePhoThong}></input>
               </td>
             </tr>
             <tr class="tr">
               <td class="td">
                 <div>Ưu đãi cho hạng vé phổ thông:</div><br/>
-                <textarea style={{"width":"400px", "height":"100px"}}></textarea>
+                <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiPhoThong} onChange={handleUuDaiPhoThong}></textarea>
               </td>
               <td class="td">
               </td>
@@ -198,17 +257,17 @@ const EditFlightModal = ({flightParams}) => {
             <tr class="tr">
               <td class="td">
                 <div>Gía vé phổ thông đặc biệt:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={PhoThongDacBiet} onChange={handlePhoThongDacBiet}></input>
               </td>
               <td class="td">
                 <div>Số vé phổ thông đặc biệt:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={SoVeDacBiet} onChange={handleSoVeDacBiet}></input>
               </td>
             </tr>
             <tr class="tr">
               <td class="td">
                 <div>Ưu đãi cho hạng vé phổ thông đặc biệt:</div><br/>
-                <textarea style={{"width":"400px", "height":"100px"}}></textarea>
+                <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiDacBiet} onChange={handleUuDaiDacBiet}></textarea>
               </td>
               <td class="td">
               </td>
@@ -216,17 +275,17 @@ const EditFlightModal = ({flightParams}) => {
             <tr class="tr">
               <td class="td">
                 <div>Gía vé hạng nhất:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={HangNhat} onChange={handleHangNhat}></input>
               </td>
               <td class="td">
                 <div>Số vé hạng nhất:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={SoVeHangNhat} onChange={handleSoVeHangNhat}></input>
               </td>
             </tr>
             <tr class="tr">
               <td class="td">
                 <div>Ưu đãi cho vé hạng nhất:</div><br/>
-                <textarea style={{"width":"400px", "height":"100px"}}></textarea>
+                <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiHangNhat} onChange={handleUuDaiHangNhat}></textarea>
               </td>
               <td class="td">
               </td>
@@ -234,17 +293,17 @@ const EditFlightModal = ({flightParams}) => {
             <tr class="tr">
               <td class="td">
                 <div>Gía vé thương gia:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={ThuongGia} onChange={handleThuongGia}></input>
               </td>
               <td class="td">
                 <div>Số vé hạng thương gia:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={SoVeThuongGia} onChange={handleSoVeThuongGia}></input>
               </td>
             </tr>
             <tr class="tr">
               <td class="td">
                 <div>Ưu đãi cho hạng vé thương gia:</div><br/>
-                <textarea style={{"width":"400px", "height":"100px"}}></textarea>
+                <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiThuongGia} onChange={handleUuDaiThuongGia}></textarea>
               </td>
               <td class="td">
               </td>

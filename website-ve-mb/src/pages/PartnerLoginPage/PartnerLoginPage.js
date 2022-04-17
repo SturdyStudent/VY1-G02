@@ -1,9 +1,38 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Logo from '../../assets/images/traveloka_pic.png';
+import { Navigate } from 'react-router-dom';
 import Header from '../../components/header'
+import axios from 'axios';
 import './PartnerLoginPage.css'
 
 function PartnerLoginPage() {
+  const loginUrl = "http://localhost:3001/api/partner/partner-login";
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [redirect, setRedirect] = useState(false);
+
+  const onChangeUsername = (e) => setUsername(e.target.value);
+  const onChangePassword = (e) => setPassword(e.target.value);
+
+  if(redirect){
+    return <Navigate to={"/partner"} replace/>
+  }
+
+  const handleLogin = (e) =>{
+    axios.post(loginUrl, {
+      username: username,
+      password:password
+    }).then((res)=>{
+      localStorage.setItem('LOGIN_INFORMATION', JSON.stringify(res.data));
+      if(res.data.toString().length > 0) {
+          setRedirect(true);
+      }
+    })
+
+    e.preventDefault();
+  }
+
   return (
     <div class="bg" className='partner-login' style={{"backgroundColor":"black"}}>
         <div style={{"background":"white", "paddingBottom":"10px"}}><Header></Header></div>
@@ -15,11 +44,11 @@ function PartnerLoginPage() {
                                                  tra lợi nhuận cho đến quản lí chuyển bay</p>
                 <form id='form'>
                     <p>Tên đăng nhập</p>
-                    <input type="text" name="user" placeholder='Nhập tên đăng nhập' style={{"height":"40px"}}></input>
+                    <input type="text" name="user" placeholder='Nhập tên đăng nhập' value={username} style={{"height":"40px"}} onChange={onChangeUsername}></input>
                     <p>Mật khẩu</p>
-                    <input type="password" name='pass' placeholder='Nhập mật khẩu' style={{"height":"40px"}}></input><br/>
+                    <input type="password" name='pass' placeholder='Nhập mật khẩu' value={password} style={{"height":"40px"}} onChange={onChangePassword}></input><br/>
                     <input type="submit" value="Đăng nhập" name='submit' style={{"marginTop":"20px", "backgroundColor":"#FF5F1F",
-                     "color":"white", "border":"none", "fontWeight":"bold", "paddingTop":"15px", "paddingBottom":"15px"}}></input>
+                     "color":"white", "border":"none", "fontWeight":"bold","textAlign":"center"}} onClick={handleLogin}></input>
                 </form>
                 <p>Chưa có mật khẩu? <a class="register-link" href='' style={{"color":"blue"}}>Đăng kí ngay!</a></p>
             </div>

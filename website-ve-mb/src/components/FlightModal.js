@@ -4,11 +4,10 @@ import axios from 'axios';
 
 function FlightModal({closeModal}) {
   
-  const url = "http://localhost:3001/api/locations";
+  const url = "http://localhost:3001/api/partner/getLocations";
   const addFlightUrl = "http://localhost:3001/api/partner/getFlights";
   
   const [locations, setLocations] = useState(null);
-  const [MaChuyenBay, setMaChuyenBay] = useState();
   const [SoHieuChuyenBay, setSoHieuChuyenBay] = useState();
   const [DiaDiemKhoiHanh, setDiaDiemKhoiHanh] = useState();
   const [DiaDiemDen, setDiaDiemDen] = useState();
@@ -21,8 +20,19 @@ function FlightModal({closeModal}) {
   const [LoaiMayBay, setLoaiMayBay] = useState();
   const [TrangThai, setTrangThai] = useState();
   const [HangBay, setHangBay] = useState();
+  const [PhoThong, setPhoThong] = useState();
+  const [UuDaiPhoThong, setUuDaiPhoThong] = useState();
+  const [SoVePhoThong, setSoVePhoThong] = useState();
+  const [PhoThongDacBiet, setPhoThongDacBiet] = useState();
+  const [UuDaiDacBiet, setUuDaiDacBiet] = useState();
+  const [SoVeDacBiet, setSoVeDacBiet] = useState();
+  const [ThuongGia, setThuongGia] = useState();
+  const [UuDaiThuongGia, setUuDaiThuongGia] = useState();
+  const [SoVeThuongGia, setSoVeThuongGia] = useState();
+  const [HangNhat, setHangNhat] = useState();
+  const [UuDaiHangNhat, setUuDaiHangNhat] = useState();
+  const [SoVeHangNhat, setSoVeHangNhat] = useState();
 
-  const handleMaChuyenBay = e => setMaChuyenBay(e.target.value);
   const handleSoHieuChuyenBay = e => setSoHieuChuyenBay(e.target.value);
   const handleDiaDiemKhoiHanh = e => setDiaDiemKhoiHanh(e.target.value);
   const handleDiaDiemDen = e => setDiaDiemDen(e.target.value);
@@ -35,10 +45,21 @@ function FlightModal({closeModal}) {
   const handleLoaiMayBay = e => setLoaiMayBay(e.target.value);
   const handleTrangThai = e => setTrangThai(e.target.value);
   const handleHangBay = e => setHangBay(e.target.value);
+  const handlePhoThong = e => setPhoThong(e.target.value);
+  const handleUuDaiPhoThong = e => setUuDaiPhoThong(e.target.value);
+  const handleSoVePhoThong = e => setSoVePhoThong(e.target.value);
+  const handlePhoThongDacBiet = e => setPhoThongDacBiet(e.target.value);
+  const handleUuDaiDacBiet = e => setUuDaiDacBiet(e.target.value);
+  const handleSoVeDacBiet = e => setSoVeDacBiet(e.target.value);
+  const handleThuongGia = e => setThuongGia(e.target.value);
+  const handleUuDaiThuongGia = e => setUuDaiThuongGia(e.target.value);
+  const handleSoVeThuongGia = e => setSoVeThuongGia(e.target.value);
+  const handleHangNhat = e => setHangNhat(e.target.value);
+  const handleUuDaiHangNhat = e => setUuDaiHangNhat(e.target.value);
+  const handleSoVeHangNhat = e => setSoVeHangNhat(e.target.value);
 
   const handleAddFlight = (e) =>{
     axios.post(addFlightUrl, {
-      MaChuyenBay: `${MaChuyenBay}`,
       SoHieuChuyenBay: `${SoHieuChuyenBay}`,
       DiaDiemKhoiHanh: `${DiaDiemKhoiHanh}`,
       DiaDiemDen: `${DiaDiemDen}`,
@@ -50,7 +71,19 @@ function FlightModal({closeModal}) {
       KhoangCachGhe: Number(KhoangCachGhe),
       LoaiMayBay: `${LoaiMayBay}`,
       TrangThai: `${TrangThai}`,
-      HangBay: `${HangBay}`
+      HangBay: `${HangBay}`,
+      PhoThong: Number(PhoThong),
+      UuDaiPhoThong : `${UuDaiPhoThong}`,
+      SoVePhoThong : Number(SoVePhoThong),
+      PhoThongDacBiet : Number(PhoThongDacBiet),
+      UuDaiDacBiet: `${UuDaiDacBiet}`,
+      SoVeDacBiet: Number(SoVeDacBiet),
+      ThuongGia: Number(ThuongGia),
+      UuDaiThuongGia: `${UuDaiThuongGia}`,
+      SoVeThuongGia: Number(SoVeThuongGia),
+      HangNhat: Number(HangNhat),
+      UuDaiHangNhat: `${UuDaiHangNhat}`,
+      SoVeHangNhat: Number(SoVeHangNhat)
     }).then((res)=>{
       closeModal = false;
       window.location.reload();
@@ -74,8 +107,8 @@ function FlightModal({closeModal}) {
           <table class="table">
             <tr class="tr">
               <td class="td">
-                <div>Mã chuyến bay:</div>
-                <input type="text" maxLength={10} value={MaChuyenBay} onChange={handleMaChuyenBay}></input>
+                <div>Số vé:</div>
+                <input type="number" maxLength={10} value={TongSoVe} onChange={handleTongSoVe}></input>
               </td>
               <td class="td">
                 <div>Trạng thái chuyến bay:</div>
@@ -106,6 +139,7 @@ function FlightModal({closeModal}) {
               <td class="td">
                 <div>Địa điểm khởi hành:</div><br/>
                   <select style={{"width":"200px", "height":"30px"}} onChange={handleDiaDiemKhoiHanh}>
+                    <option value={DiaDiemKhoiHanh}>Không xác định</option>
                     {locations &&  (locations.map(location =>
                       <option value={location.MaDiaDiem}>{location.TenDiaDiem}</option>
                     ))}
@@ -114,6 +148,7 @@ function FlightModal({closeModal}) {
               <td class="td">
                 <div>Địa điểm đến:</div><br/>
                 <select style={{"width":"200px", "height":"30px"}} onChange={handleDiaDiemDen}>
+                    <option value={DiaDiemDen}>Không xác định</option>
                     {locations &&  (locations.map(location =>
                       <option value={location.MaDiaDiem}>{location.TenDiaDiem}</option>
                     ))}
@@ -143,14 +178,6 @@ function FlightModal({closeModal}) {
                 <input type="number" value={KhoangCachGhe} onChange={handleKhoangCachGhe}></input>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td" style={{"marginRight":"200px"}}>
-                <div>Số vé:</div>
-                <input type="number" maxLength={10} value={TongSoVe} onChange={handleTongSoVe}></input>
-              </td>
-              <td class="td">
-              </td>
-            </tr>
           </table>
           <hr style={{"height":"1.5px","backgroundColor":"gray"}}></hr>
           <h2><b>Thêm Hạng Vé</b></h2>
@@ -158,17 +185,17 @@ function FlightModal({closeModal}) {
             <tr class="tr">
               <td class="td">
                 <div>Gía vé phổ thông:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={PhoThong} onChange={handlePhoThong}></input>
               </td>
               <td class="td">
                 <div>Số vé phổ thông:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={SoVePhoThong} onChange={handleSoVePhoThong}></input>
               </td>
             </tr>
             <tr class="tr">
               <td class="td">
                 <div>Ưu đãi cho hạng vé phổ thông:</div><br/>
-                <textarea style={{"width":"400px", "height":"100px"}}></textarea>
+                <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiPhoThong} onChange={handleUuDaiPhoThong}></textarea>
               </td>
               <td class="td">
               </td>
@@ -176,17 +203,17 @@ function FlightModal({closeModal}) {
             <tr class="tr">
               <td class="td">
                 <div>Gía vé phổ thông đặc biệt:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={PhoThongDacBiet} onChange={handlePhoThongDacBiet}></input>
               </td>
               <td class="td">
                 <div>Số vé phổ thông đặc biệt:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={SoVeDacBiet} onChange={handleSoVeDacBiet}></input>
               </td>
             </tr>
             <tr class="tr">
               <td class="td">
                 <div>Ưu đãi cho hạng vé phổ thông đặc biệt:</div><br/>
-                <textarea style={{"width":"400px", "height":"100px"}}></textarea>
+                <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiDacBiet} onChange={handleUuDaiDacBiet}></textarea>
               </td>
               <td class="td">
               </td>
@@ -194,17 +221,17 @@ function FlightModal({closeModal}) {
             <tr class="tr">
               <td class="td">
                 <div>Gía vé hạng nhất:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={HangNhat} onChange={handleHangNhat}></input>
               </td>
               <td class="td">
                 <div>Số vé hạng nhất:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={SoVeHangNhat} onChange={handleSoVeHangNhat}></input>
               </td>
             </tr>
             <tr class="tr">
               <td class="td">
                 <div>Ưu đãi cho vé hạng nhất:</div><br/>
-                <textarea style={{"width":"400px", "height":"100px"}}></textarea>
+                <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiHangNhat} onChange={handleUuDaiHangNhat}></textarea>
               </td>
               <td class="td">
               </td>
@@ -212,17 +239,17 @@ function FlightModal({closeModal}) {
             <tr class="tr">
               <td class="td">
                 <div>Gía vé thương gia:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={ThuongGia} onChange={handleThuongGia}></input>
               </td>
               <td class="td">
                 <div>Số vé hạng thương gia:</div>
-                <input type="number" maxLength={10}></input>
+                <input type="number" maxLength={10} value={SoVeThuongGia} onChange={handleSoVeThuongGia}></input>
               </td>
             </tr>
             <tr class="tr">
               <td class="td">
                 <div>Ưu đãi cho hạng vé thương gia:</div><br/>
-                <textarea style={{"width":"400px", "height":"100px"}}></textarea>
+                <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiThuongGia} onChange={handleUuDaiThuongGia}></textarea>
               </td>
               <td class="td">
               </td>
