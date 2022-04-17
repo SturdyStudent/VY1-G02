@@ -3,6 +3,10 @@
     height: 100%;
     background-color: white;
     text-align: center;
+    padding-bottom: 30px;
+}
+.create-flight-table{
+    margin-left: 30px;
 }
 .head-component{
     padding-top: 20px;
@@ -24,33 +28,33 @@
 #btnCreate:hover{
     background-color: #ffbb77;
 }
- table, tr, th, td{
+.create-flight-table, .create-flight-table tr, .create-flight-table th, .create-flight-table td{
     border: solid black 1px;
     border-collapse: collapse;
 }
-table{
+.create-flight-table{
     width: 1100px;
     table-layout: fixed;
 }
-th{
+.create-flight-table th{
     padding: 10px;
 }
-th:nth-child(1){
+.create-flight-table th:nth-child(1){
     width: 130px;
 }
-th:nth-child(2){
+.create-flight-table th:nth-child(2){
     width: 400px;
 }
-th:nth-child(3){
+.create-flight-table th:nth-child(3){
     width: 185px;
 }
-th:nth-child(4){
+.create-flight-table th:nth-child(4){
     width: 185px;
 }
-th:nth-child(5){
+.create-flight-table th:nth-child(5){
     width: 200px;
 }
-td div button{
+.create-flight-table td div button{
     background-color: #FF8000;
     border: none;
     margin-right: 5px;
@@ -60,10 +64,10 @@ td div button{
     padding-right: 8px;
     border-radius: 10px;
 }
-td div button:hover{
+.create-flight-table td div button:hover{
     background-color: #bb9166;
 }
-td{
+.create-flight-table td{
     padding: 10px;
 }
 #flight-info{
