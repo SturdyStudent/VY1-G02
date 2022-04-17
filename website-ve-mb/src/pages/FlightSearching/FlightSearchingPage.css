@@ -1,6 +1,7 @@
 .findticket{
     position: relative;
     top: 50px;
+    margin: 0 150px 0 150px;
 }
 .findticket form{
     background-color: white;

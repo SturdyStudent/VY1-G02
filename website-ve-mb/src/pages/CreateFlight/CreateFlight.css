@@ -24,33 +24,33 @@
 #btnCreate:hover{
     background-color: #ffbb77;
 }
- table, tr, th, td{
+.createfly table, tr, th, td{
     border: solid black 1px;
     border-collapse: collapse;
 }
-table{
+.createfly table{
     width: 1100px;
     table-layout: fixed;
 }
-th{
+.createfly th{
     padding: 10px;
 }
-th:nth-child(1){
+.createfly th:nth-child(1){
     width: 130px;
 }
-th:nth-child(2){
+.createfly th:nth-child(2){
     width: 400px;
 }
-th:nth-child(3){
+.createfly th:nth-child(3){
     width: 185px;
 }
-th:nth-child(4){
+.createfly th:nth-child(4){
     width: 185px;
 }
-th:nth-child(5){
+.createfly th:nth-child(5){
     width: 200px;
 }
-td div button{
+.createfly td div button{
     background-color: #FF8000;
     border: none;
     margin-right: 5px;
@@ -60,10 +60,10 @@ td div button{
     padding-right: 8px;
     border-radius: 10px;
 }
-td div button:hover{
+.createfly td div button:hover{
     background-color: #bb9166;
 }
-td{
+.createfly td{
     padding: 10px;
 }
 #flight-info{
