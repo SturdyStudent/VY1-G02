@@ -1,55 +1,53 @@
-h1{
-    font-weight: 600;
-}
-h2{
-    font-weight: 500;
-}
-.middle{
-    margin-left: 100px;
-}
 body{
     background-color: whitesmoke;
     font-family: Arial, Helvetica, sans-serif;
 }
-#table, #table td, #table th, #tr{
-    border: none;
+
+.booking h1{
+    font-weight: 600;
 }
-#table td{
-    width: 55%;
+.booking h2{
+    font-weight: 500;
 }
-#table{
-    margin: 0;
-    justify-content: space-between;
-    width: fit-content;
-}
-#p-booking{
+.booking p{
     font-size: 14px;
 }
-#form-booking{
+.booking{
+    margin-left: 100px;
+}
+
+.booking form{
     margin-right: 36%;
     padding: 10px;
     background-color: white;
     box-shadow: 3px 3px 7px grey;
     border-radius: 10px;
 }
-#table{
+
+.bookinfo{
     width: 100%;
+    border-collapse: collapse;
 }
-#table tr:nth-child(1){
-    border-bottom: 1px solid black;
+.bookinfo tr, td, th{
+    border: none;
 }
-.title{
+.bookinfo th{
+    border-bottom: 1px solid grey;
+}
+
+.booktitle{
     text-align: left;
     width: 210px;
 }
-.titlelong{
+.booktitlelong{
     text-align: left;
     width: 350px;
 }
-.fixbttn{
+
+.bookfix{
     text-align: right;
 }
-#button{
+.bookfixbttn{
     border: none;
     background-color: white;
     margin-bottom: 2px;
@@ -61,10 +59,12 @@ body{
     font-size: 12px;
     color: grey;
 }
-#a{
+
+.bookconfirm{
     margin-left: 43%;
+    padding-bottom: 100px;
 }
-#a:link, #a:visited{
+.bookconfirm a:link, a:visited{
     padding: 15px 80px 15px 80px;
     background-color: orangered;
     border: 2px solid orangered;
@@ -72,6 +72,7 @@ body{
     color: white;
     text-align: center;
 }
+
 #xungnhat{
     margin-left: 10px;
 }

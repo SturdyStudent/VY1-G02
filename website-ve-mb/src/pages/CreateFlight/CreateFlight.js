@@ -44,7 +44,11 @@ const CreateFlight = () => {
       {openModal &&  <FlightModal closeModal={setIsOpenModal} />}
       <hr style={{"height":"1px", "backgroundColor":"#707070"}}></hr>
       <div style={{"fontSize":"18px"}}><h2><b>Danh sách chuyến bay của {partnerJson.TenHangBay}</b></h2></div>
+<<<<<<< HEAD
       <table class="create-flight-table">
+=======
+      <table class="createfly">
+>>>>>>> a412e57440f865e6feda077e8e995f1353a6df38
         <tr>
           <th>Ngày thêm</th>
           <th>Thông tin chuyến bay</th>

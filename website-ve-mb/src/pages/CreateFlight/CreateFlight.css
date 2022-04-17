@@ -28,6 +28,7 @@
 #btnCreate:hover{
     background-color: #ffbb77;
 }
+<<<<<<< HEAD
 .create-flight-table, .create-flight-table tr, .create-flight-table th, .create-flight-table td{
     border: solid black 1px;
     border-collapse: collapse;
@@ -55,6 +56,35 @@
     width: 200px;
 }
 .create-flight-table td div button{
+=======
+.createfly table, tr, th, td{
+    border: solid black 1px;
+    border-collapse: collapse;
+}
+.createfly table{
+    width: 1100px;
+    table-layout: fixed;
+}
+.createfly th{
+    padding: 10px;
+}
+.createfly th:nth-child(1){
+    width: 130px;
+}
+.createfly th:nth-child(2){
+    width: 400px;
+}
+.createfly th:nth-child(3){
+    width: 185px;
+}
+.createfly th:nth-child(4){
+    width: 185px;
+}
+.createfly th:nth-child(5){
+    width: 200px;
+}
+.createfly td div button{
+>>>>>>> a412e57440f865e6feda077e8e995f1353a6df38
     background-color: #FF8000;
     border: none;
     margin-right: 5px;
@@ -64,10 +94,17 @@
     padding-right: 8px;
     border-radius: 10px;
 }
+<<<<<<< HEAD
 .create-flight-table td div button:hover{
     background-color: #bb9166;
 }
 .create-flight-table td{
+=======
+.createfly td div button:hover{
+    background-color: #bb9166;
+}
+.createfly td{
+>>>>>>> a412e57440f865e6feda077e8e995f1353a6df38
     padding: 10px;
 }
 #flight-info{

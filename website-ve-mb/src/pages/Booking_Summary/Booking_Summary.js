@@ -6,18 +6,20 @@ function Booking_Summary() {
   return (
     <div>
         <Header/>
-        <div class="middle">
+        <div class="booking">
             <h1>Đặt chỗ của tôi</h1>
             <p style={{"marginTop":"-10px"}}>Điền thông tin và xem lại đặt chỗ.</p>
             
             <h2>Thông tin liên hệ</h2>
             <form>
-                <table id='table'>
-                    <tr id='tr'>
-                        <th class="title">Họ và tên người liên hệ</th>
-                        <th class="fixbttn"><button>Chỉnh sửa</button></th>
+                <table class="bookinfo">
+                    <tr>
+                        <th class="booktitle">Họ và tên người liên hệ</th>
+                        <th class="bookfix">
+                            <button class="bookfixbttn">Chỉnh sửa</button>
+                        </th>
                     </tr>
-                    <tr id='tr'>
+                    <tr>
                         <td>
                             <p>Số di động<br/>
                             +84901234567</p>
@@ -32,12 +34,14 @@ function Booking_Summary() {
 
             <h2>Thông tin hành khách</h2>
             <form>
-                <table id='table'>
-                    <tr id='tr'>
-                        <th class="title">Họ và tên người đặt 1</th>
-                        <th class="fixbttn"><button>Chỉnh sửa</button></th>
+                <table class="bookinfo">
+                    <tr>
+                        <th class="booktitle">Họ và tên người đặt 1</th>
+                        <th class="bookfix">
+                            <button class="bookfixbttn">Chỉnh sửa</button>
+                        </th>
                     </tr>
-                    <tr id='tr'>
+                    <tr>
                         <td>
                             <p>Ngày sinh<br/>
                             01 tháng 01 2001</p>
@@ -52,16 +56,18 @@ function Booking_Summary() {
 
             <h2>Tiện nghi chuyến bay</h2>
             <form>
-                <table id='table'>
-                    <tr id='tr'>
-                        <th class="title">Hành lý</th>
-                        <th class="fixbttn"><button>Chọn hành lý</button></th>
+                <table class="bookinfo">
+                    <tr>
+                        <th class="booktitle">Hành lý</th>
+                        <th class="bookfix">
+                            <button>Chọn hành lý</button>
+                        </th>
                     </tr>
-                    <tr id='tr'>
+                    <tr>
                         <td colspan="2" style={{"textAlign":"left"}}>
                             <br/><b>Đà Nẵng (DAD) ➔ TP HCM (SGN)</b></td>
                     </tr>
-                    <tr id='tr'>
+                    <tr>
                         <td>
                             <p>Họ và tên người đặt 1<br/>
                             Họ và tên người đặt 2</p>
@@ -76,12 +82,12 @@ function Booking_Summary() {
 
             <h2>Tóm tắt</h2>
             <form>
-                <table id='table'>
-                    <tr id='tr'>
-                        <th class="title">Giá bạn trả</th>
-                        <th class="fixbttn">1.000.000VND</th>
+                <table class="bookinfo">
+                    <tr>
+                        <th class="booktitle">Giá bạn trả</th>
+                        <th class="bookfix">1.000.000VND</th>
                     </tr>
-                    <tr id='tr'>
+                    <tr>
                         <td>
                             <p>VietJet Air (Người lớn)<br/>
                             Vietravel Airlines (Người lớn)<br/>
@@ -96,7 +102,9 @@ function Booking_Summary() {
                 </table>
             </form>
             <br/><br/>
-            <a href="">Tiếp tục</a>
+            <div class="bookconfirm">
+                <a href="">Tiếp tục</a>
+            </div>
         </div>
     </div>
   )

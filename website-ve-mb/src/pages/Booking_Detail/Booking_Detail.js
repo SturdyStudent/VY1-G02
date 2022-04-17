@@ -9,14 +9,17 @@ function Booking_Detail() {
         <div class="booking">
             <h1>Đặt chỗ của tôi</h1>
             <p style={{"marginTop":"-10px"}}>Điền thông tin và xem lại đặt chỗ.</p>
+
             <h2>Thông tin liên hệ</h2>
             <form>
-                <table id='table'>
-                    <tr id='tr'>
-                        <th class="title">Họ và tên người liên hệ</th>
-                        <th class="fixbttn"><button id='button'>Chỉnh sửa</button></th>
+                <table class="bookinfo">
+                    <tr>
+                        <th class="booktitle">Họ và tên người liên hệ</th>
+                        <th class="bookfix">
+                            <button class="bookfixbttn" id='button'>Chỉnh sửa</button>
+                        </th>
                     </tr>
-                    <tr id='tr'>
+                    <tr>
                         <td>
                             <p>Số di động<br/>
                             +84901234567</p>
@@ -31,12 +34,14 @@ function Booking_Detail() {
 
             <h2>Thông tin hành khách</h2>
             <form>
-                <table id='table'>
-                    <tr id='tr'>
-                        <th class="title">Họ và tên người đặt 1</th>
-                        <th class="fixbttn"><button id='button'>Chỉnh sửa</button></th>
+                <table class="bookinfo">
+                    <tr>
+                        <th class="booktitle">Họ và tên người đặt 1</th>
+                        <th class="bookfix">
+                            <button class="bookfixbttn" id='button'>Chỉnh sửa</button>
+                        </th>
                     </tr>
-                    <tr id='tr'>
+                    <tr>
                         <td>
                             <p>Ngày sinh<br/>
                             01 tháng 01 2001</p>
@@ -49,7 +54,9 @@ function Booking_Detail() {
                 </table>
             </form>
             <br/><br/>
-            <a href="TienNghiChuyenBay.html" id='a'>forward</a>
+            <div class="bookconfirm">
+                <a href="" id='a'>Tiếp tục</a>
+            </div>
         </div>
     </div>
   )
