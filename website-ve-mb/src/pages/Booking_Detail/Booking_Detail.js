@@ -6,7 +6,7 @@ function Booking_Detail() {
   return (
       <div>
           <Header/>
-        <div class="middle">
+        <div class="booking">
             <h1>Đặt chỗ của tôi</h1>
             <p style={{"marginTop":"-10px"}}>Điền thông tin và xem lại đặt chỗ.</p>
             <h2>Thông tin liên hệ</h2>

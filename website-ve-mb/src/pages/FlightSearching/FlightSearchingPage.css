@@ -1,3 +1,17 @@
-#middle{
-    height: 1000px;
+.findticket{
+    position: relative;
+    top: 50px;
+}
+.findticket form{
+    background-color: white;
+    padding: 30px;
+    box-shadow: 3px 3px 7px grey;
+    border-radius: 10px;
+}
+.findticket label{
+    font: bold 12px arial, verdana;
+}
+.findticket input, select{
+    border: 1px solid grey;
+    border-radius: 5px;
 }

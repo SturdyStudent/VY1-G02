@@ -4,7 +4,7 @@ import SponsorPic from '../assets/images/footer.jpg'
 
 function footer() {
   return (
-    <div id="footer">
+    <div class="footer">
       <table>
         <tr>
           <td rowSpan={6}> <img src={SponsorPic} width="300px"/></td>
