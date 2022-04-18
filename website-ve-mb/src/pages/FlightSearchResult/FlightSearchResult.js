@@ -12,7 +12,7 @@ function FlightSearchResult() {
         <div class="search-header">
             <div class="center-search">
                 <div class="search-header-info">
-                    <div class="search-location"><b>Hà Nội (HAD) <img src={East}/> Đà Nẵng (DAD)</b></div>
+                    <div class="search-location"><b>{localStorage.getItem("SEARCH_INFO")} <img src={East}/> Đà Nẵng (DAD)</b></div>
                     <div>T2, 18 Thg 04 2022  |  1 passengers  |  Phổ thông</div>
                 </div>
                 <div class="search-header-change">

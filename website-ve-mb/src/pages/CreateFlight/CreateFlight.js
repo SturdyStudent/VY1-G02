@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import './CreateFlight.css'
+import './CreateFlight.css' 
 import {Add, Edit, Delete} from "@material-ui/icons"
 import FlightModal from '../../components/FlightModal'
 import EditFlightModal from '../../components/editFlightModal'
-import axios from 'axios';
+import axios from 'axios'
 import Modal from 'react-modal';
 import Fade from '@material-ui/core/Fade';
 
@@ -39,7 +39,9 @@ const CreateFlight = () => {
     <div className='flight-container'>
       <div className='head-component'>
         <div id='search-text'><b style={{"fontSize":"20px"}}>Tìm kiếm:</b> &nbsp; <input id='search-field'  type="text" placeholder='Nhập mã chuyến bay' style={{"borderRadius":"10px","paddingLeft":"15px"}}></input></div>
-        <button id='btnCreate' href="#" onClick={() => {setIsOpenModal(true)}}><b><Add/>Thêm chuyến bay</b></button>
+        <button class="bttncrtfly" id='btnCreate' href="#" onClick={() => {setIsOpenModal(true)}}>
+          <b><Add/> Thêm chuyến bay</b>
+        </button>
       </div>
       {openModal &&  <FlightModal closeModal={setIsOpenModal} />}
       <hr style={{"height":"1px", "backgroundColor":"#707070"}}></hr>
