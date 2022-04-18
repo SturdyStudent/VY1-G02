@@ -42,17 +42,12 @@
 .modal-table td div{
     font-weight: bold;
 }
-<<<<<<< HEAD
-.tr{
-
-=======
 .modal-table td{
     width: 50%;
     padding-left: 100px;
 }
 .modal-table tr{
     justify-content: space-around;
->>>>>>> 0d2299dc60150771ce656f04a6ad6adaaf09dfbd
     text-align: left;
     display: flex;
 }
