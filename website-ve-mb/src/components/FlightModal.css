@@ -18,35 +18,45 @@
     height: 1900px;
     z-index: 100;
 }
-#title{
+
+.modal-title{
     background-color: #FF8000;
     padding: 15px;
     font-size: large;
     color: white;
     font-weight: bold;
 }
-.table, .tr, .td{
+
+.modal-table{
     border: none;
-}
-.table{
     table-layout: relative;
     margin:0;
     margin-top: 20px;
+    width: 100%;
 }
-.td input{
+.modal-table td input{
     margin-top: 10px;
     border-radius: 10px;
     padding-left: 10px;
-    width: 150%;
 }
-.td div{
+.modal-table td div{
     font-weight: bold;
 }
+<<<<<<< HEAD
 .tr{
 
+=======
+.modal-table td{
+    width: 50%;
+    padding-left: 100px;
+}
+.modal-table tr{
+    justify-content: space-around;
+>>>>>>> 0d2299dc60150771ce656f04a6ad6adaaf09dfbd
     text-align: left;
     display: flex;
 }
+
 .button-modal button, .button-modal input{
     background-color: #FF8000;
     color: white;

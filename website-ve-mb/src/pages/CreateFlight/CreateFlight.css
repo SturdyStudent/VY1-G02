@@ -18,26 +18,25 @@
     font-size: 17px;
     
 }
-#btnCreate{
+.bttncrtfly{
     color: white;
     background-color: #FF8000;
     border: none;
     padding: 10px;
     border-radius: 8px;
 }
-#btnCreate:hover{
+.bttncrtfly:hover{
     background-color: #ffbb77;
 }
-.createfly table, .createfly tr, .createfly th, .createfly td{
-    border: solid black 1px;
+
+.createfly{
+    width: 1100px;
+    margin-left: 70px;
+    table-layout: fixed;
     border-collapse: collapse;
 }
-.createfly table{
-    width: 1100px;
-    table-layout: fixed;
-}
-.createfly th{
-    padding: 10px;
+.createfly th, .createfly td{
+    border: 1px solid black;
 }
 .createfly th:nth-child(1){
     width: 130px;

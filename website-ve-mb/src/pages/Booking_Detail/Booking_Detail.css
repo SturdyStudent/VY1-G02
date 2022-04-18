@@ -28,7 +28,7 @@ body{
     width: 100%;
     border-collapse: collapse;
 }
-.bookinfo tr, td, th{
+.bookinfo tr, .bookinfo td, .bookinfo th{
     border: none;
 }
 .bookinfo th{
@@ -64,7 +64,7 @@ body{
     margin-left: 43%;
     padding-bottom: 100px;
 }
-.bookconfirm a:link, a:visited{
+.bookconfirm a:link, .bookconfirm a:visited{
     padding: 15px 80px 15px 80px;
     background-color: orangered;
     border: 2px solid orangered;

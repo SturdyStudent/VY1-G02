@@ -13,6 +13,7 @@ function PartnerApp() {
         <SideBar/>
         <div className='others'>
           <CreateFlight/>
+      
         </div>
       </div>
     </div>

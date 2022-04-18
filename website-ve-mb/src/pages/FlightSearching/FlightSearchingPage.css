@@ -12,7 +12,7 @@
 .findticket label{
     font: bold 12px arial, verdana;
 }
-.findticket input, select{
+.findticket input, .findticket select{
     border: 1px solid grey;
     border-radius: 5px;
 }
