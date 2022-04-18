@@ -2,7 +2,6 @@ import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home/HomePage';
 import Payment from './pages/Payment/PaymentPage';
-import FlightSearchingPage from './pages/FlightSearching/FlightSearchingPage';
 import FlightSearchResult from './pages/FlightSearchResult/FlightSearchResult';
 import CreateFlight from './pages/CreateFlight/CreateFlight'; 
 import PartnerLoginPage from './pages/PartnerLoginPage/PartnerLoginPage';

@@ -1,0 +1,85 @@
+.center-search > div{
+    display: inline-block;
+    vertical-align: middle;
+}
+.center-search > div:nth-child(1){
+    text-align: left;
+    width: 85%;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+    border: 0px solid #bbbbbb;
+    box-shadow: 1px 2px 8px #bbbbbb;
+    padding: 15px;
+}
+.search-header-info > div:nth-child(2){
+    color:#687176;
+}
+.search-header-change{
+    width: 15%;
+    text-align: center;
+}
+.search-header-change div button{
+    border-radius: 7px;
+    background-color: #0194f3;
+    color: white;
+    font-size: small;
+    padding: 6px;
+    border: none;
+}
+.center-search{
+    width: 66%;
+    border-radius: 10px;
+    border: 1px solid #bbbbbb;
+    background-color: #f7f9fa;
+    box-shadow: 3px 1px 3px #bbbbbb;
+}
+.search-header{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+}
+.search-result-item{
+    width: 66%;
+    height: 175px;
+    border-radius: 10px;
+    border: 1px solid #bbbbbb;
+    background-color: #f7f9fa;
+    box-shadow: 3px 1px 3px #bbbbbb;
+    padding:20px;
+}
+.search-result{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+}
+.search-result-partner, .search-result-route, .search-result-cost{
+    display: inline-block;
+    vertical-align: middle;
+}
+.search-result-partner{
+    width: 20%;
+}
+.search-result-route{
+    width: 50%;
+    text-align: center;
+}
+.search-result-route table{
+    margin: 0px auto;
+    text-align: center;
+    width: 80%;
+    height: 60%;
+}
+.search-result-cost{
+    width: 30%;
+    text-align: right;
+}
+.search-result-item > div{
+    height: 80%;
+}
+.btn-flight-detail, .btn-ticket-detail{
+    display: inline-block;
+    margin-right: 30px;
+}

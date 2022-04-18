@@ -10,8 +10,11 @@ function PartnerLoginPage() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [redirect, setRedirect] = useState(false);
 
+  const [redirect, setRedirect] = useState(false);
+  if(redirect){
+    return <Navigate to={"/partner"} replace/>
+  }
   const onChangeUsername = (e) => setUsername(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
 
@@ -32,7 +35,6 @@ function PartnerLoginPage() {
 
     e.preventDefault();
   }
-
   return (
     <div class="bg" className='partner-login' style={{"backgroundColor":"black"}}>
         <div style={{"background":"white", "paddingBottom":"10px"}}><Header></Header></div>
