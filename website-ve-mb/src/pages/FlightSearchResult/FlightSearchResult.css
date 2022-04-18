@@ -82,4 +82,23 @@
 .btn-flight-detail, .btn-ticket-detail{
     display: inline-block;
     margin-right: 30px;
+    font-weight: 550;
+    color: #1394f3;
+}
+.btnPickFlight{
+    width: 190px;
+    padding:5px;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    background-color: #ff5e1f;
+}
+.search-highligh-btn{
+    font-size: 21px;
+    color: #ff5e1f;
+}
+.search-result-location td div{
+    background-color: #e4e4e4;
+    border-radius: 10px;
+    margin: 0px auto;
 }
