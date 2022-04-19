@@ -12,28 +12,7 @@
     box-shadow: 3px 3px 7px grey;
     border-radius: 10px;
 }
-.findticket label{
-    font: bold 13px arial, verdana;
-}
-.findticket input, .findticket select{
-    border: 1px solid grey;
-    border-radius: 5px;
-}
-.findway > td > label{
-    font-size: 14px;
-    margin-left: 5px;
-}
-.findway td > input[type='radio']{
-    width: 30px;
-    transform: scale(1.8);
-}
-.findway-holder div{
-    display: inline-block;
-}
-.findway-holder div select{
-    padding:5px;
-    
-}
+
 .findticket-form table{
     width: 100%;
     height: 80%;
@@ -53,24 +32,47 @@
 .findticket-form table tr td:nth-child(2){
     margin-left: 10px;
 }
+
+.findticket label{
+    font: bold 13px arial, verdana;
+    font-size: 14px;
+    margin-left: 5px;
+}
+.findticket input, .findticket select{
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.findticket input[type='radio']{
+    width: 30px;
+    transform: scale(1.8);
+}
+.findway label{
+    padding-right: 20px;
+}
+.findway-host{
+    margin-top: 15px;
+    padding-bottom: 20px;
+}
+.findway-holder div{
+    display: inline-block;
+}
+.findway-holder div select{
+    padding:5px;
+}
 .finddate-holder div{
     display: inline-block;
 }
 .findway-holder div, .finddate-holder div{
     width: 50%;
-    
 }
 .findway-holder div select, .finddate-holder div input[type='date']{
     width: 95%;
     padding: 7px;
 }
+
 .seatclass, .customerno{
     width: 100%;
     padding: 10px;
-}
-.findway-host{
-    margin-top: 15px;
-    padding-bottom: 20px;
 }
 .btnFindticket{
     background-color: #ff5e1f;

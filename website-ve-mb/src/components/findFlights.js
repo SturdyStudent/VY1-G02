@@ -4,10 +4,18 @@ import SearchIcon from '../assets/images/search_icon.png'
 import './findFlights.css';
 
 function FindFlights() {
+    const [khoiHanh, setKhoiHanh] = useState(false);
+    const hien = ReactDOM.createHien(document.getElementById('hien'));
+    const element = <p>hi</p>
+    hien.render(element);
+
     const [redirect, setRedirect] = useState(false);
     const [soHanhKhach, setSoHanhKhach] = useState();
     const handleSoHanhKhach = e => setSoHanhKhach(e.target.value);
 
+    const handleOnChange = () => {
+        setKhoiHanh(!khoiHanh);
+    }
     if(redirect){
         localStorage.setItem("SEARCH_INFO", soHanhKhach);
         return <Navigate to={"/search-result"} replace/>
@@ -21,13 +29,11 @@ function FindFlights() {
                 <form class="findticket-form">
                     <table>
                         <tr class="findway">
-                            <td>
+                            <td colSpan={2}>
                                 <input type="radio" id="findone" name="findways" value="MOTCHIEU" checked />
                                 <label for="findone" >Một chiều / Khứ hồi</label>
                                 <input type="radio" id="findmany" name="findways" value="NHIEUCHIEU" />
                                 <label for="findmany">Nhiều thành phố</label>
-                            </td>
-                            <td>
                             </td>
                         </tr>
                         <tr class="findway-host">
@@ -53,7 +59,8 @@ function FindFlights() {
                             </td>
                             <td>
                                 <label for="customerno">Số hành khách</label><br />
-                                <input type="number" id="customerno" name="findcustomer" min="1" class="customerno" style={{"padding":"5px"}} value={soHanhKhach} onChange={handleSoHanhKhach}/>
+                                <input type="number" id="customerno" name="findcustomer" min="1" class="customerno"
+                                    style={{"padding":"5px"}} value={soHanhKhach} onChange={handleSoHanhKhach}/>
                             </td>
                         </tr>
                         <tr>
@@ -64,7 +71,10 @@ function FindFlights() {
                                         <input type="date" id="finddatefrom" name="finddate" />
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="finddateto" name="returndate" />
+                                        <input type="checkbox" id="finddateto" name="returndate"
+                                        checked={khoiHanh} onClick={handleOnChange} />
+                                        <p>Check? {khoiHanh ? "checked" : "un-checked"}</p>
+                                        <p id="hien"></p>
                                         <label for="finddateto">Khứ hồi</label><br />
                                         <input type="date" id="finddateto" name="finddate" />
                                     </div>
@@ -81,7 +91,9 @@ function FindFlights() {
                             </td>
                         </tr>
                     </table>
-                    <div class="line-button"><button onClick={() => setRedirect(true)} class="btnFindticket"><img src={SearchIcon} /><b>Tìm chuyến bay</b></button></div>
+                    <div class="line-button"><button onClick={() => setRedirect(true)} class="btnFindticket">
+                        <img src={SearchIcon} /><b>Tìm chuyến bay</b>
+                    </button></div>
                 </form>
             </div>
         </div>
