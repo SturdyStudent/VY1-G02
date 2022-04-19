@@ -1,6 +1,19 @@
 var config = require('../config/db.config');
 const sql = require('mssql');
 
+async function getPartnerNameById(partnerId){
+    try{
+        let pool = await sql.connect(config);
+        let flights = await pool.request()
+            .input('MaHangBay', sql.VarChar(10), partnerId)
+            .query("Select TenHangBay From HangBay HB Where HB.MaHangBay = @MaHangBay");
+        return flights.recordsets;
+    }
+    catch(error){
+        console.log(error);
+    }
+} 
+
 async function getPartnerFlights(partnerId){//phải chờ chạy xong thì mới vào hàm
     try{
         let pool = await sql.connect(config);
@@ -197,6 +210,6 @@ module.exports = {
     //Partner
     addPartner:addPartner,
     getPartners:getPartners,
-    loginPartner:loginPartner
-    
+    loginPartner:loginPartner,
+    getPartnerNameById:getPartnerNameById
 }

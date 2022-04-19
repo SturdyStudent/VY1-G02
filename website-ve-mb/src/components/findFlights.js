@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Navigate } from 'react-router-dom';
+import Land from '../assets/images/land_icon.png';
 import SearchIcon from '../assets/images/search_icon.png'
 import './findFlights.css';
 
@@ -34,8 +35,8 @@ function FindFlights() {
                             <td class="findway-holder">
                                 <div>
                                     <label for="findwayfrom">Từ</label><br />
-                                    <select id="findwayfrom" name="findfromto">
-                                        <option value="DaNang">Đà Nẵng (DAD)</option>
+                                    <select id="findwayfrom" name="findfromto" class="findwayfrom">
+                                        <option value="DaNang"><img src={Land} />Đà Nẵng (DAD)</option>
                                         <option value="TPHCM">TP HCM (SGN)</option>
                                         <option value="HaNoi">Hà Nội (HAN)</option>
                                         <option value="DaLat">Đà Lạt (DLI)</option>
@@ -43,7 +44,7 @@ function FindFlights() {
                                 </div>
                                 <div>
                                     <label for="findwayto">Đến</label><br />
-                                    <select id="findwayto" name="findfromto">
+                                    <select id="findwayto" name="findfromto" class="findwayto">
                                         <option value="TPHCM">TP HCM (SGN)</option>
                                         <option value="DaNang">Đà Nẵng (DAD)</option>
                                         <option value="HaNoi">Hà Nội (HAN)</option>

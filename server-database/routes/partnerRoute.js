@@ -16,7 +16,7 @@ route.get("/getFlights",(req, res)=>{
 });
 route.get("/getFlights/:id", (req, res)=>{
     partnerController.getFlightById(req.params.id).then(result => {
-        res.send(result[0]);
+        res.send(result);
     })
 })
 route.post("/getFlights", (req, res)=>{
@@ -58,6 +58,12 @@ route.post("/getPartners", (req, res)=>{
 
     partnerController.addPartner(order).then(result =>{
         res.status(201).send(result);
+    })
+})
+route.post("/getPartners/:id", (req, res)=>{
+    partnerController.getPartnerNameById(req.params.id).then(result => {
+        res.send(JSON.stringify(result[0][0]));
+        console.log(JSON.stringify(result[0][0]));
     })
 })
 route.post("/partner-login", (req, res)=>{

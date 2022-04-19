@@ -63,6 +63,14 @@
 .findway-holder div select, .finddate-holder div input[type='date']{
     width: 95%;
     padding: 7px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+.findwayfrom, .findwayto{
+    background: url('./../assets/images/land_icon.png') no-repeat scroll 7px 7px;
+    padding-left:30px;
 }
 .seatclass, .customerno{
     width: 100%;

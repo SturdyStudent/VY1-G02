@@ -15,7 +15,7 @@ function FlightSearchResult() {
     const [flightInfo, setFlightInfo] = useState(null);
     const [locations, setLocations] = useState(null);
     const [partners, setPartners] = useState(null);
-    const [partner, setPartner] = useState(null);
+    const [allowPartnerName, setAllowPartnerName] = useState(false);
 
     const [SoHieuChuyenBay, setSoHieuChuyenBay] = useState();
     const [DiaDiemKhoiHanh, setDiaDiemKhoiHanh] = useState();
@@ -68,19 +68,27 @@ function FlightSearchResult() {
     const handleSoVeHangNhat = e => setSoVeHangNhat(e.target.value);
     const diaDiem = localStorage.getItem("SEARCH_INFO");
 
+    const handlePartnerName = (partnerName, nameList) => {
+        nameList.forEach(element => {
+            if(partnerName == element.MaHangBay){
+                return element.TenHangBay;
+            }
+        });
+    }
+
     useEffect(()=>{
         axios.get(getFlightUrl)
         .then(response => {
            setFlightInfo(response.data);
         })
-      }, [getFlightUrl])
+      }, [getFlightUrl]);
 
     useEffect(()=>{
-        axios.get(getPartnerUrl)
-        .then(response => {
-           setPartners(response.data);
+    axios.get(getPartnerUrl)
+    .then(response => {
+          setPartners(response.data);
         })
-      }, [getPartnerUrl])
+      }, [getPartnerUrl]);
 
   return (
     <div>
@@ -98,11 +106,9 @@ function FlightSearchResult() {
                 </div>
             </div>
         </div>
-        {flightInfo && (flightInfo.map(flights => {
-            const duration = '';
+        {flightInfo && (flightInfo.map(function (flights) {
             var gioDi = format(new Date(flights.NgayGioKhoiHanh), 'yyyy/MM/dd hh:mm:ss');
             var gioDen = format(new Date(flights.NgayGioDen), 'yyyy/MM/dd hh:mm:ss');
-            var diff = Math.abs(new Date() - gioDi);
 
             var day1 = new Date(gioDi); 
             var day2 = new Date(gioDen);
@@ -114,7 +120,7 @@ function FlightSearchResult() {
               <div class="search-result-item">
                   <div>
                       <div class="search-result-partner"><img src={Vietjet} width="80px"/> <b>
-                          {flights.HangBay}</b></div>
+                        {flights.HangBay}</b></div>
                       <div class="search-result-route">
                           <table>
                               <tr>
