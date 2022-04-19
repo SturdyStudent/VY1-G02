@@ -96,7 +96,10 @@ function FlightSearchResult() {
         <div class="search-header">
             <div class="center-search">
                 <div class="search-header-info">
-                    <div class="search-location"><b>{diaDiem} <img src={East}/> Đà Nẵng (DAD)</b></div>
+                    <div class="search-location">
+                        {diaDiem}
+                        <b>TP HCM(SGN) <img src={East}/> Đà Nẵng (DAD)</b>
+                    </div>
                     <div>T2, 18 Thg 04 2022  |  1 passengers  |  Phổ thông</div>
                 </div>
                 <div class="search-header-change">
@@ -143,7 +146,10 @@ function FlightSearchResult() {
                           </table>
                       </div>
                       <div class="search-result-cost">
-                          <div><b><span class="search-highligh-btn">{flights.GiaVe.toLocaleString()}  VNĐ</span></b><span style={{"color":"#687176", "fontWeight":"550"}}>/khách</span></div>
+                          <div>
+                              <b><span class="search-highligh-btn">{flights.GiaVe.toLocaleString()}  VNĐ</span></b>
+                              <span style={{"color":"#687176", "fontWeight":"550"}}>/khách</span>
+                            </div>
                           <div><button class="btnPickFlight" >Chọn</button></div>
                       </div>
                   </div>
