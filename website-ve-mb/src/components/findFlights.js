@@ -3,6 +3,7 @@ import React, {useState,useEffect} from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import Modal from 'react-modal';
+import format from 'date-fns/format';
 import Minus from '../assets/images/minus.png'
 import Add from '../assets/images/add.png'
 import Adult from '../assets/images/adult.png'
@@ -14,16 +15,19 @@ import './findFlights.css';
 function FindFlights() {
     const url = "http://localhost:3001/api/partner/getLocations";
 
+    var curr = new Date();
+    var date = curr.toISOString().slice(0, 10);
+
     const [locations, setLocations] = useState();
     const [khoiHanh, setKhoiHanh] = useState(false);
     const [redirect, setRedirect] = useState(false);
-    const [DiaDiemDi, setDiaDiemDi] = useState();
-    const [DiaDiemDen, setDiaDiemDen] = useState();
-    const [NgayDi, setNgayDi] = useState();
+    const [DiaDiemDi, setDiaDiemDi] = useState("Đà Nẵng (DAD)");
+    const [DiaDiemDen, setDiaDiemDen] = useState("Đà Nẵng (DAD)");
+    const [NgayDi, setNgayDi] = useState(date);
     const [KhuHoi, setKhuHoi] = useState();
-    const [HangGhe, setHangGhe] = useState();
+    const [HangGhe, setHangGhe] = useState("Phổ thông");
     const [modal, setModal] = useState(false);
-    const [adultQuantity, setAdultQuantity] = useState(0);
+    const [adultQuantity, setAdultQuantity] = useState(1);
     const [childQuantity, setChildQuantity] = useState(0);
     const [babyQuantity, setBabyQuantity] = useState(0);
 
@@ -40,7 +44,7 @@ function FindFlights() {
 
     const addAdultQuantity = () => setAdultQuantity(adultQuantity + 1);
     const minusAdultQuantity = () => {
-        if(adultQuantity > 0){
+        if(adultQuantity > 1){
             setAdultQuantity(adultQuantity - 1);
         }
     }
@@ -63,7 +67,7 @@ function FindFlights() {
     const handleOnChange = () => {
         setKhoiHanh(!khoiHanh);
     }
-    
+
     useEffect(()=>{
         axios.get(url)
         .then(response => {
@@ -72,7 +76,7 @@ function FindFlights() {
     }, [url]);
 
     if(redirect){
-        localStorage.setItem("SEARCH_INFO", adultQuantity);
+        localStorage.setItem("SEARCH_INFO", JSON.stringify(SEARCH_INFO));
         return <Navigate to={"/search-result"} replace/>
     };
 
@@ -96,19 +100,39 @@ function FindFlights() {
                                 <div>
                                     <label for="findwayfrom">Từ</label><br />
                                     <span class="find-icon"><FlightTakeoff/></span>
-                                    <select id="findwayfrom" name="findfromto" class="findwayfrom">
-                                    {locations &&  (locations.map(location =>
-                                        <option value={location.MaDiaDiem}>{location.TenDiaDiem}</option>
-                                        ))}
+                                    <select id="findwayfrom" name="findfromto" class="findwayfrom" onChange={(e) => {setDiaDiemDi(e.target.value)}}>
+                                    {locations &&  (locations.map(function(location) {
+                                        var rawCityName = location.TenDiaDiem;
+                                        var cityNames = rawCityName.split(",");
+                                        return(
+                                        <option value={`${cityNames[0]} (${location.MaDiaDiem})`}>{cityNames[0]} ({location.MaDiaDiem})</option>
+                                            )})
+                                        )}
+                                    </select>
+                                </div>
+                                <div class="search-filter">
+                                    Bộ lọc: 
+                                    <select>
+                                        <option>Điểm dừng</option>
+                                    </select>
+                                    <select>
+                                        <option>Thời gian bay</option>
+                                    </select>
+                                    <select>
+                                        <option>Hãng hàng không</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label for="findwayto">Đến</label><br />
                                     <span class="find-icon"><FlightLand/></span>
-                                    <select id="findwayto" name="findfromto" class="findwayto">
-                                    {locations &&  (locations.map(location =>
-                                        <option value={location.MaDiaDiem}>{location.TenDiaDiem}</option>
-                                        ))}
+                                    <select id="findwayto" name="findfromto" class="findwayto" onChange={(e) => {setDiaDiemDen(e.target.value)}}>
+                                    {locations &&  (locations.map(function(location) {
+                                        var rawCityName = location.TenDiaDiem;
+                                        var cityNames = rawCityName.split(",");
+                                        return(
+                                        <option value={`${cityNames[0]} (${location.MaDiaDiem})`}>{cityNames[0]} ({location.MaDiaDiem})</option>
+                                            )})
+                                        )}
                                     </select>
                                 </div>
                             </td>
@@ -169,23 +193,23 @@ function FindFlights() {
                                 <div class="finddate-holder">
                                     <div> 
                                         <label for="finddatefrom">Ngày đi</label><br />
-                                        <input type="date" id="finddatefrom" name="finddate" />
+                                        <input type="date" id="finddatefrom" name="finddate" value={NgayDi} onChange={(e) => {setNgayDi(e.target.value)}}/>
                                     </div>
                                     <div>
                                         <input type="checkbox" id="finddateto" name="returndate" />
                                         <label for="finddateto">Khứ hồi</label><br />
-                                        <input type="date" id="finddateto" name="finddate" />
+                                        <input type="date" id="finddateto" name="finddate" onChange={(e) => {setKhuHoi(e.target.value)}}/>
                                     </div>
                                 </div>
                             </td>
                             <td>
                                 <label for="seatclass">Hạng ghế</label><br />
                                 <span class="find-icon"><AirlineSeatReclineNormal style={{"zIndex":"0"}}/></span>
-                                <select id="seatclass" name="seatclass" class="seatclass">
-                                    <option value="economy">Phổ thông</option>
-                                    <option value="preconomy">Phổ thông đặc biệt</option>
-                                    <option value="business">Thương gia</option>
-                                    <option value="fstclass">Hạng nhất</option>
+                                <select id="seatclass" name="seatclass" class="seatclass" onChange={(e) => {setHangGhe(e.target.value)}}>
+                                    <option value="Phổ thông">Phổ thông</option>
+                                    <option value="Phổ thông đặc biệt">Phổ thông đặc biệt</option>
+                                    <option value="Thương gia">Thương gia</option>
+                                    <option value="Hạng nhất">Hạng nhất</option>
                                 </select>
                             </td>
                         </tr>

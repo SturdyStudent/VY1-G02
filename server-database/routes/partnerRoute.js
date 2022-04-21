@@ -14,6 +14,13 @@ route.get("/getFlights",(req, res)=>{
         res.send(result[0]);
     })
 });
+route.post("/getFlights/query",(req, res)=>{
+    let order = {...req.body}
+
+    partnerController.getFlightBySearchQuery(order).then(result =>{
+        res.status(201).send(result);
+    })
+})
 route.get("/getFlights/:id", (req, res)=>{
     partnerController.getFlightById(req.params.id).then(result => {
         res.send(result);
@@ -38,11 +45,18 @@ route.delete("/getFlights/:id", (req, res)=>{
         res.status(202).send(result);
     })
 })
+//lấy loại hạng vé
+route.get("/getSeatClass", (req, res)=>{
+    partnerController.getSeatClass().then(result => {
+        res.send(result[0]);
+    })
+})
 route.get("/getSeatClass/:id", (req, res)=>{
     partnerController.getSeatClassById(req.params.id).then(result => {
         res.send(result[0]);
     })
 })
+//lấy địa điểm
 route.get("/getLocations",(req, res)=>{
     partnerController.getLocations().then(result => {
         res.send(result[0]);

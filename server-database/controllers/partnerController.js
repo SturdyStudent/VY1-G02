@@ -36,6 +36,15 @@ async function getFlights(){//phải chờ chạy xong thì mới vào hàm
         console.log(error);
     }
 }
+async function getFlightBySearchQuery(query){
+        let pool = await sql.connect(config);
+        let flights = await pool.request()
+        .input('DiaDiemDi', sql.NVarChar, query.DiaDiemDi)
+        .input('DiaDiemDen', sql.NVarChar, query.DiaDiemDen)
+        .input('NgayGioKhoiHanh', sql.Date, query.NgayDi)
+        .query("SELECT * FROM ChuyenBay WHERE DiaDiemKhoiHanh = @DiaDiemDi AND DiaDiemDen = @DiaDiemDen AND CAST(ChuyenBay.NgayGioKhoiHanh as DATE) = @NgayGioKhoiHanh")
+        return flights.recordsets;
+}
 async function getFlightById(flightId){
     try{
         let pool = await sql.connect(config);
@@ -184,6 +193,16 @@ async function loginPartner(partner){
     }
 }
 // Quản lí loại hạng vé
+async function getSeatClass(){
+    try{
+        let pool = await sql.connect(config);
+        let seatClass = await pool.request()
+            .query("SELECT * FROM LoaiHangVe");
+        return seatClass.recordsets;
+    }catch(err){
+        console.log(err);
+    }
+}
 async function getSeatClassById(flightId){
     try{
         let pool = await sql.connect(config);
@@ -204,12 +223,15 @@ module.exports = {
     addFlight:addFlight,
     updateFlight:updateFlight,
     deleteFlight:deleteFlight,
-    getSeatClassById:getSeatClassById,
+    getFlightBySearchQuery:getFlightBySearchQuery,
     //Địa điểm
     getLocations:getLocations,
     //Partner
     addPartner:addPartner,
     getPartners:getPartners,
     loginPartner:loginPartner,
-    getPartnerNameById:getPartnerNameById
+    getPartnerNameById:getPartnerNameById,
+    //Loại hạng vé
+    getSeatClass: getSeatClass,
+    getSeatClassById:getSeatClassById
 }

@@ -29,6 +29,10 @@
     padding: 6px;
     border: none;
 }
+.search-header-change div button:hover{
+    background-color: #0071bd;
+    cursor: pointer;
+}
 .center-search{
     width: 66%;
     border-radius: 10px;
@@ -93,6 +97,10 @@
     border-radius: 6px;
     background-color: #ff5e1f;
 }
+.btnPickFlight:hover{
+    cursor: pointer;
+    background-color: #c44c1d;
+}
 .search-highligh-btn{
     font-size: 21px;
     color: #ff5e1f;
@@ -101,4 +109,22 @@
     background-color: #e4e4e4;
     border-radius: 10px;
     margin: 0px auto;
+}
+/* search-filter */
+.search-filter {
+    width: 63%;
+    margin: 0px auto;
+}
+.search-filter select, .search-filter div{
+    display: inline-block;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+.search-filter select{
+    padding: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #2c9ff4;
+    border: 0px;
+    border-radius: 15px;
 }

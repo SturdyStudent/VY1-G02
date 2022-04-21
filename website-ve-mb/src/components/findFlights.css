@@ -108,7 +108,13 @@
     display: flex;
     justify-content: end;
 }
-
+.line-button button{
+    border-radius: 10px;
+    cursor: pointer;
+}
+.line-button button:hover{
+    background-color: #d84f18;
+}
 /* modal */
 .customer-quantity-modal{
     z-index: 10;
@@ -160,4 +166,8 @@
 }
 .btnDoneQuantity span{
     cursor: pointer;
+}
+/*filter search*/
+.search-filter select{
+    display: inline-block;
 }

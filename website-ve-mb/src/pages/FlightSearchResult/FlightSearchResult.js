@@ -3,18 +3,35 @@ import Header from '../../components/header'
 import East from '../../assets/images/right_arrow.png';
 import SearchIcon from '../../assets/images/search_icon.png'
 import Vietjet from '../../assets/images/vietjet.png'
-import {format,differenceInMinutes} from 'date-fns';
+import {format} from 'date-fns';
+import viLocale from 'date-fns/locale/vi'
 import Line from '../../assets/images/line.png'
 import './FlightSearchResult.css';
 import axios from 'axios';
 
 function FlightSearchResult() {
-    const getFlightUrl = "http://localhost:3001/api/partner/getFlights";
+    const getFlightUrl = "http://localhost:3001/api/partner/getFlights/query";
     const getPartnerUrl = "http://localhost:3001/api/partner/getPartners";
+    const getSeatClassUrl = "http://localhost:3001/api/partner/getSeatClass";
+    const flightSearchInfo = JSON.parse(localStorage.getItem("SEARCH_INFO"));
+    const formatSearchNgayDi = format(new Date(flightSearchInfo.NgayDi), "iii, dd 'Thg' MM yyyy",{
+        locale: viLocale
+    });
+    const diaDiemDi = flightSearchInfo.DiaDiemDi;
+    const diaDiemDen = flightSearchInfo.DiaDiemDen;
+    const formatDiaDiemDi = diaDiemDi.substring(
+        diaDiemDi.indexOf("(") + 1, 
+        diaDiemDi.lastIndexOf(")")
+    );
+    const formatDiaDiemDen = diaDiemDen.substring(
+        diaDiemDen.indexOf("(") + 1, 
+        diaDiemDen.lastIndexOf(")")
+    )
 
     const [flightInfo, setFlightInfo] = useState(null);
     const [locations, setLocations] = useState(null);
     const [partners, setPartners] = useState(null);
+    const [seatclass, setSeatclass] = useState(null);
     const [allowPartnerName, setAllowPartnerName] = useState(false);
 
     const [SoHieuChuyenBay, setSoHieuChuyenBay] = useState();
@@ -66,7 +83,8 @@ function FlightSearchResult() {
     const handleHangNhat = e => setHangNhat(e.target.value);
     const handleUuDaiHangNhat = e => setUuDaiHangNhat(e.target.value);
     const handleSoVeHangNhat = e => setSoVeHangNhat(e.target.value);
-    const diaDiem = localStorage.getItem("SEARCH_INFO");
+
+    const totalPeople = parseInt(flightSearchInfo.NguoiLon) + parseInt(flightSearchInfo.TreEm) + parseInt(flightSearchInfo.EmBe);
 
     const handlePartnerName = (partnerName, nameList) => {
         nameList.forEach(element => {
@@ -77,9 +95,13 @@ function FlightSearchResult() {
     }
 
     useEffect(()=>{
-        axios.get(getFlightUrl)
+        axios.post(getFlightUrl,{
+            DiaDiemDi: formatDiaDiemDi,
+            DiaDiemDen: formatDiaDiemDen,
+            NgayDi: flightSearchInfo.NgayDi
+        })
         .then(response => {
-           setFlightInfo(response.data);
+           setFlightInfo(response.data[0]);
         })
       }, [getFlightUrl]);
 
@@ -90,6 +112,12 @@ function FlightSearchResult() {
         })
       }, [getPartnerUrl]);
 
+    useEffect(()=>{
+    axios.get(getSeatClassUrl)
+    .then(response => {
+            setSeatclass(response.data);
+        })
+        }, [getSeatClassUrl]); 
   return (
     <div>
         <Header/>
@@ -97,10 +125,9 @@ function FlightSearchResult() {
             <div class="center-search">
                 <div class="search-header-info">
                     <div class="search-location">
-                        {diaDiem}
-                        <b>TP HCM(SGN) <img src={East}/> Đà Nẵng (DAD)</b>
+                        <b>{flightSearchInfo.DiaDiemDi} <img src={East}/> {flightSearchInfo.DiaDiemDen}</b>
                     </div>
-                    <div>T2, 18 Thg 04 2022  |  1 passengers  |  Phổ thông</div>
+                    <div>{formatSearchNgayDi}  | {totalPeople} passengers  |  {flightSearchInfo.HangGhe}</div>
                 </div>
                 <div class="search-header-change">
                     <div>
@@ -108,6 +135,18 @@ function FlightSearchResult() {
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="search-filter">
+            <b>Bộ lọc:</b> 
+            <select>
+                <option>Điểm dừng</option>
+            </select>
+            <select>
+                <option>Thời gian bay</option>
+            </select>
+            <select>
+                <option>Hãng hàng không</option>
+            </select>
         </div>
         {flightInfo && (flightInfo.map(function (flights) {
             var gioDi = format(new Date(flights.NgayGioKhoiHanh), 'yyyy/MM/dd hh:mm:ss');
@@ -119,11 +158,14 @@ function FlightSearchResult() {
             var difference= Math.abs(day2-day1);
             var round = Math.floor(difference/(3600000));
             var spare = (difference % 3600000)/60000;
+
+            const vals = partners.filter(partner => partner.MaHangBay === flights.HangBay); 
+
             return (<div class="search-result">
               <div class="search-result-item">
                   <div>
-                      <div class="search-result-partner"><img src={Vietjet} width="80px"/> <b>
-                        {flights.HangBay}</b></div>
+                      <div class="search-result-partner"><img src={Vietjet} width="60px"/> <b>
+                        {vals[0].TenHangBay}</b></div>
                       <div class="search-result-route">
                           <table>
                               <tr>
