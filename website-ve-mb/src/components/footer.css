@@ -6,8 +6,13 @@
     background-color: black;
     color: white;
     text-align: center;
+    display: flex;
+    justify-content: center;
  }
 .footer table{
     margin: 50px;
     display: inline-block;
+}
+.footer th{
+    font-size: medium;
 }

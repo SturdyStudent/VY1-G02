@@ -1,0 +1,215 @@
+.prebooking-background-blue{
+    height: 150px;
+    background-color: #0770cd;
+}
+.prebooking-container{
+    height: 500px;
+    width: 64%;
+    margin: -60px auto 0px auto;
+}
+.prebooking-header-card{
+    width: 100%;
+    height: 118px;
+    padding: 5px 10px 19px 15px;
+    box-shadow: 1px 2px 8px #bbbbbb;
+    background-color: white;
+    border-radius: 10px;
+}
+.prebooking-header-card-sub{
+    display: flex;
+}
+.prebooking-header-card-sub div{
+    display: inline-block;
+    color: #68717c;
+}
+.prebooking-info-container-bold td{
+    background-color: #f2f3f3;
+    padding: 2px;
+    border-radius: 14px;
+}
+.prebooking-info{
+    background-color: white;
+    border-radius: 10px;
+    width: 64%;
+    height: 48%;
+    padding: 10px;
+    margin-right: 2%;
+    display: flex;
+    box-shadow: 1px 2px 8px #bbbbbb;
+    justify-content: space-between;
+}
+.prebooking-info hr{
+    margin: 0px;
+    border: none;
+    height: 1px;
+    color: #e4e4e4; 
+    background-color: #e4e4e4; 
+}
+.prebooking-info div:nth-child(1){
+    width: 60%;
+}
+.prebooking-info div:nth-child(2){
+    width: 40%;
+    text-align: right;
+    font-weight: 600;
+    color:#1a7ed5;
+}
+.prebooking-info-container{
+    width: 100%;
+}
+.prebooking-info-container-container{
+    text-align: center;
+    width: 100%;
+}
+.prebooking-info-container-container td:nth-child(1){
+    padding: 4px;
+}
+.prebooking-info-container-container td:nth-child(2){
+    width: 30%;
+}
+.prebooking-info-container table{
+    width: 100%;
+}
+.prebooking-info-container table tr td:nth-child(1){
+    width: 10%;
+}
+.prebooking-info-container table tr td:nth-child(2) div:nth-child(1){
+    text-shadow : 0.3px 0 0 black;
+    font-size: medium;
+}
+.prebooking-info-container table td:nth-child(2){
+    width: 45%;
+}
+.prebooking-discount div:nth-child(2){
+    color: #8f9092;
+    font-size: small;
+}
+.prebooking-info-date{
+    width: 100%;
+    text-shadow : 0.7px 0 0 black;
+    margin-top: 10px;
+    font-size: medium;
+}
+.prebooking-sub-container{
+    margin-top: 15px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.prebooking-sub-container div{
+    display: inline-block;
+}
+.prebooking-right-column{
+    height: 100%;
+    margin-top: 0px;
+    display: flex;
+    justify-content:baseline;
+    width: 34%;
+}
+
+.prebooking-supplement-info{
+    height: 32%;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 1px 2px 8px #bbbbbb;
+    background-color: white;
+    border-radius: 10px;
+}
+.prebooking-supplement-info > div{
+    font-size: large;
+    text-shadow :   1px 0 0 black;
+}
+.prebooking-header-supplement-info div{
+    display: inline-block;
+}
+.prebooking-supplement-info hr{
+    margin: 0px;
+    border: none;
+    height: 1px;
+    color: #e4e4e4; 
+    background-color: #e4e4e4; 
+}
+.prebooking-detail-refund{
+    margin: 0px;
+}
+.prebooking-detail-refund div{
+    color: #02a753;
+    text-shadow: none;
+    font-size: small;
+    margin-top: 0px;
+    padding: 0px;
+    text-shadow :2px 0 0 #02a753;
+}
+.prebooking-body-supplement-info > div{
+    font-size: medium;
+}
+.prebooking-body-supplement-info div{
+    margin: 0px;
+    padding: 0px;
+    text-shadow: none;
+}
+.prebooking-detail-word{
+    display: inline-block;
+    background-color: #0770cd;
+}
+.prebooking-right-column > div:nth-child(2){
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 2px 8px #bbbbbb;
+}
+.prebooking-right-column button{
+    width: 100%;
+    padding: 10px;
+    background-color: #f96d01;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+}
+.prebooking-summary{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+}
+.prebooking-summary > div:nth-child(1){
+    font-weight: 600;
+    font-size: larger;
+    padding: 10px;
+    padding-left: 20px;
+}
+.prebooking-summary hr{
+    margin: 0px;
+    border: none;
+    height: 2px;
+    color: #e4e4e4; 
+    background-color: #e4e4e4; 
+}
+.prebooking-summary-item{
+    padding: 10px;
+    width: 100%;
+    display: table;
+    vertical-align: middle;
+    text-shadow :   0.5px 0 0 black;
+}
+.prebooking-summary-item div:nth-child(1){
+    width: 60%;
+    display: inline-block;
+}
+.prebooking-summary-item div:nth-child(2){
+    display: inline-block;
+    margin: auto 0px;
+    text-align: right;
+    width: 40%;
+}
+.prebooking-summary-total-price, .prebooking-summary-total-price div:nth-child(2){
+    background-color: #f6f6f6;
+}
+.prebooking-summary-total-price{
+    display: flex;
+    margin-top: 20px;
+    left: 0;
+    bottom: 0;
+}

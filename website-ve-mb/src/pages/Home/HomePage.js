@@ -7,17 +7,16 @@ import './HomePage.css';
 function FlightSearchingPage() {
     return (
         <div>
-        <Header></Header>
-        <div class="vmbbox">
-            <table>
-                <tr>
-                    <td>Vé máy bay</td>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
-        <div class="findbox"><FindFlights/></div>
-        <Footer></Footer>
+            <Header></Header>
+            <div class="vmbbox">
+                <table>
+                    <tr>
+                        <td>Vé máy bay</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="findbox"><FindFlights/></div>
         </div>
     )
 }

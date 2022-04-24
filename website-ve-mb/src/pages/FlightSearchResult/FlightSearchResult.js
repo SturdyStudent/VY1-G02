@@ -3,6 +3,7 @@ import Header from '../../components/header'
 import East from '../../assets/images/right_arrow.png';
 import SearchIcon from '../../assets/images/search_icon.png'
 import Vietjet from '../../assets/images/vietjet.png'
+import { Navigate } from 'react-router-dom';
 import {format} from 'date-fns';
 import viLocale from 'date-fns/locale/vi'
 import Line from '../../assets/images/line.png'
@@ -33,6 +34,7 @@ function FlightSearchResult() {
     const [partners, setPartners] = useState(null);
     const [seatclass, setSeatclass] = useState(null);
     const [allowPartnerName, setAllowPartnerName] = useState(false);
+    const [redirect, setRedirect] = useState(false);
 
     const [SoHieuChuyenBay, setSoHieuChuyenBay] = useState();
     const [DiaDiemKhoiHanh, setDiaDiemKhoiHanh] = useState();
@@ -86,14 +88,6 @@ function FlightSearchResult() {
 
     const totalPeople = parseInt(flightSearchInfo.NguoiLon) + parseInt(flightSearchInfo.TreEm) + parseInt(flightSearchInfo.EmBe);
 
-    const handlePartnerName = (partnerName, nameList) => {
-        nameList.forEach(element => {
-            if(partnerName == element.MaHangBay){
-                return element.TenHangBay;
-            }
-        });
-    }
-
     useEffect(()=>{
         axios.post(getFlightUrl,{
             DiaDiemDi: formatDiaDiemDi,
@@ -118,8 +112,14 @@ function FlightSearchResult() {
             setSeatclass(response.data);
         })
         }, [getSeatClassUrl]); 
+
+    if(redirect){
+        localStorage.setItem("SUMMARY_INFO", "VietJet Air");
+        return <Navigate to={"/prebooking"} replace />
+    }    
+    
   return (
-    <div>
+    <div style={{"height":"700px"}}>
         <Header/>
         <div class="search-header">
             <div class="center-search">
@@ -160,6 +160,19 @@ function FlightSearchResult() {
             var spare = (difference % 3600000)/60000;
 
             const vals = partners.filter(partner => partner.MaHangBay === flights.HangBay); 
+            // const seatClassVal = seatclass.filter(seat => seat.MaChuyenBay === flights.MaChuyenBay);
+            // const giaVe = 0;
+            
+            // if(seatClassVal.length > 0){
+            //     if(flightSearchInfo.HangGhe == "Phổ thông")
+            //     giaVe = seatClassVal.PhoThong;
+            // else if(flightSearchInfo.HangGhe == "Phổ thông đặc biệt")
+            //     giaVe = seatClassVal.PhoThongDacBiet;
+            // else if(flightSearchInfo.HangGhe == "Thương gia")
+            //     giaVe = seatClassVal.ThuongGia;
+            // else if(flightSearchInfo.HangGhe == "Hạng nhất")
+            //     giaVe = seatClassVal.HangNhat;
+            // }
 
             return (<div class="search-result">
               <div class="search-result-item">
@@ -192,7 +205,7 @@ function FlightSearchResult() {
                               <b><span class="search-highligh-btn">{flights.GiaVe.toLocaleString()}  VNĐ</span></b>
                               <span style={{"color":"#687176", "fontWeight":"550"}}>/khách</span>
                             </div>
-                          <div><button class="btnPickFlight" >Chọn</button></div>
+                          <div><button class="btnPickFlight" onClick={() => setRedirect(true)} >Chọn</button></div>
                       </div>
                   </div>
                   <div>
@@ -202,7 +215,6 @@ function FlightSearchResult() {
                 </div>
             </div>)}
         ))}
-          
     </div>
   )
 }

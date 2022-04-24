@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import format from 'date-fns/format';
 import Minus from '../assets/images/minus.png'
 import Add from '../assets/images/add.png'
+import Partnership from '../assets/images/partner_pic.jpg'
 import Adult from '../assets/images/adult.png'
 import Child from '../assets/images/child.png'
 import Baby from '../assets/images/baby.png'
@@ -110,18 +111,7 @@ function FindFlights() {
                                         )}
                                     </select>
                                 </div>
-                                <div class="search-filter">
-                                    Bộ lọc: 
-                                    <select>
-                                        <option>Điểm dừng</option>
-                                    </select>
-                                    <select>
-                                        <option>Thời gian bay</option>
-                                    </select>
-                                    <select>
-                                        <option>Hãng hàng không</option>
-                                    </select>
-                                </div>
+                
                                 <div>
                                     <label for="findwayto">Đến</label><br />
                                     <span class="find-icon"><FlightLand/></span>
@@ -216,6 +206,9 @@ function FindFlights() {
                     </table>
                     <div class="line-button"><button onClick={() => setRedirect(true)} class="btnFindticket"><img src={SearchIcon} /><b>Tìm chuyến bay</b></button></div>
                 </form>
+            </div>
+            <div style={{"display":"flex","justifyContent":"center","marginTop":"100px"}}>
+                <img src={Partnership} width="62%"/>
             </div>
         </div>
   )

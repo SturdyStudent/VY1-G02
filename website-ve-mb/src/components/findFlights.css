@@ -167,7 +167,3 @@
 .btnDoneQuantity span{
     cursor: pointer;
 }
-/*filter search*/
-.search-filter select{
-    display: inline-block;
-}

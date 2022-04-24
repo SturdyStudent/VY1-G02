@@ -8,9 +8,9 @@ function footer() {
       <table>
         <tr>
           <td rowSpan={6}> <img src={SponsorPic} width="300px"/></td>
-          <td>Về Traveloka</td>
-          <td>Sản phẩm</td>
-          <td>Khác</td>
+          <th>Về Traveloka</th>
+          <th>Sản phẩm</th>
+          <th>Khác</th>
         </tr>
         <tr>
           <td>Cách đặt chỗ</td>
