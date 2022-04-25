@@ -65,18 +65,18 @@ function PaymentPage() {
             </td>
           </tr>
           <tr  className='payment-price-detail'>
-            <td>
+            <td style={{"paddingBottom":"10px"}}>
               <div>Vietnam Airlines (Người lớn) x 1</div>
             </td>
             <td className='payment-price' style={{"textAlign":"right"}}>
               <span>1.051.000 VNĐ</span>
             </td>
           </tr>
-          <tr  className='payment-price-detail'>
-            <td>
+          <tr  className='payment-price-detail payment-price-total'>
+            <td style={{"paddingTop":"0px"}}>
               <div>Tổng giá tiền</div>
             </td>
-            <td style={{"textAlign":"right"}}>
+            <td style={{"textAlign":"right", "paddingTop":"0px"}}>
               <h4>1.051.000 VNĐ</h4>
             </td>
           </tr>
