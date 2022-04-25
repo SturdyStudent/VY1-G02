@@ -4,7 +4,7 @@ body{
 }
 
 .booking h1{
-    padding: 10px 0 10px 0;
+    padding-top: 10px;
     font-weight: 650;
     font-size: 27px;
 }
@@ -22,12 +22,10 @@ body{
 .personinfo{
     float: left;
     width: 630px;
-    background-color: aqua;
 }
 .flightsimple{
     float: left;
     width: 300px;
-    background-color: red;
 }
 
 .booking form{
@@ -109,6 +107,48 @@ body{
     color: white;
     text-align: center;
     text-decoration: none;
+}
+
+.flightsimple{
+    padding-top: 174px;
+    margin-left: 23px;
+}
+
+.flightsimple th{
+    vertical-align: center;
+    padding-bottom: 15px;
+}
+.flightsimple td{
+    padding-top: 13px;
+}
+.flightsimple th:nth-child(1){
+    text-align: left;
+}
+.flightsimple th:nth-child(2) div{
+    padding-left: 11px;
+    font-size: 13px;
+    color: #0199F4;
+}
+
+.flightsimple span{
+    font-size: 13px;    
+    font-weight: 550;
+}
+.seatclassnote{
+    margin-top: -5px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: grey;
+}
+
+.flightnote{
+    margin-top: 20px;
+}
+.flightnote span:nth-child(1){
+    color: grey;
+}
+.flightnote span:nth-child(3){
+    color: rgb(12, 164, 12);
 }
 
 #xungnhat{

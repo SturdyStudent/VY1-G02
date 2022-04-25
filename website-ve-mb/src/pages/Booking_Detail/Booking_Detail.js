@@ -1,8 +1,16 @@
-import React from 'react'
-import './Booking_Detail.css'
+import React, {useState,useEffect} from 'react';
+import { Navigate } from 'react-router-dom';
+import '../Booking_Detail/Booking_Detail.css'
 import Header from '../../components/header'
+import BookingRight from '../Booking_Right_FlightShort/Booking_Right'
 
 function Booking_Detail() {
+    const [tiep, setTiep] = useState(false);
+ 
+    if(tiep){
+     return <Navigate to={"/booking_detail"} replace/>
+    };
+    
   return (
       <div>
       <Header/>
@@ -56,13 +64,11 @@ function Booking_Detail() {
                 </form>
                 <br/><br/>
                 <div class="bookconfirm">
-                    <a href="" id='a'>Tiếp tục</a>
+                    <a href="" onClick={() => setTiep(true)}>Tiếp tục</a>
                 </div>
             </div>
-            
-            <div class="flightsimple">
-                a
-            </div>
+
+            <BookingRight/>
         </div>
     </div>
   )

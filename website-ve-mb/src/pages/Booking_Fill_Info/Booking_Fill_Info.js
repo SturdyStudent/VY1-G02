@@ -1,16 +1,23 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react';
+import { Navigate } from 'react-router-dom';
 import '../Booking_Detail/Booking_Detail.css'
 import Header from '../../components/header'
-import Footer from '../../components/footer'
+import BookingRight from '../Booking_Right_FlightShort/Booking_Right'
 
 function Booking_Fill_Info() {
+   const [tiep, setTiep] = useState(false);
+
+   if(tiep){
+    return <Navigate to={"/booking_detail"} replace/>
+   };
+
   return (
     <div>
     <Header/>
         <div class="booking">
             <div class="personinfo">
                 <h1>Đặt chỗ của tôi</h1>
-                <p style={{"marginTop":"-10px"}}>Điền thông tin và xem lại đặt chỗ.</p>
+                <p>Điền thông tin và xem lại đặt chỗ.</p>
             
                 <h2>Thông tin liên hệ</h2>
                 <form>
@@ -96,13 +103,11 @@ function Booking_Fill_Info() {
                 </form>
                 <br/><br/>
                 <div class="bookconfirm">
-                    <a href="">Tiếp tục</a>
+                    <a href="" onClick={() => setTiep(true)}>Tiếp tục</a>
                 </div>
             </div>
 
-            <div class="flightsimple">
-                a
-            </div>  
+            <BookingRight/>
         </div>
     </div>
   )
