@@ -16,7 +16,7 @@ import PreBooking from './pages/PreBooking/PreBooking';
 
 function App() {
   return (
-    <div>
+    <div id='root'>
         <Router>
           <Routes>
             <Route path="/" element={<Home/>}/>
@@ -34,7 +34,7 @@ function App() {
           </Routes>
         </Router> 
         <div className='search-footer'>
-          <Footer/>
+        <Footer/>
         </div>
     </div>
   );

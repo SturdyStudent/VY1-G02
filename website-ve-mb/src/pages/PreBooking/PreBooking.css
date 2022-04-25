@@ -169,6 +169,10 @@
     border: none;
     border-radius: 6px;
 }
+.prebooking-right-column button:hover{
+    background-color: #cc5c07;
+    cursor: pointer;
+}
 .prebooking-summary{
     width: 100%;
     display: flex;
