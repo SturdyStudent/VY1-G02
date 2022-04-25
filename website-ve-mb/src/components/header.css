@@ -18,4 +18,5 @@
 .background{
     background-color: white;
     margin: 0;
+    box-shadow: 5px 2px 5px gainsboro;
 }
