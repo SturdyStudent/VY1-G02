@@ -1,14 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from '../../components/header'
 import SmallFlight from '../../assets/images/small_flight.png'
 import MockRightArrow from '../../assets/images/mock_right_arrow.png'
 import Vietjet from '../../assets/images/vietjet.png'
 import Detail from '../../assets/images/detail.png'
 import Line from '../../assets/images/line.png'
+import { Navigate } from 'react-router'
 import Checked from '../../assets/images/checked.png'
 import './PreBooking.css'
 
 function PreBooking() {
+    const [redirect, setRedirect] = useState(false);
+    if(redirect){
+        localStorage.setItem("TRANSFER_INFO", "nothing");
+        return <Navigate to={"/booking-fill"} replace/>
+    }
+
   return (
     <div style={{"height":"700px"}}>
         <Header/>
@@ -89,7 +96,7 @@ function PreBooking() {
                             <div>VNĐ 1.043.720</div>
                         </div>
                     </div>
-                    <button>Tiếp tục</button>
+                    <button onClick={() => setRedirect(true)}>Tiếp tục</button>
                 </div>
             </div>
         </div>
