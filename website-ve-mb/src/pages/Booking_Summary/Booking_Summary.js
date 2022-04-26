@@ -8,7 +8,7 @@ function Booking_Summary() {
    const [tiep, setTiep] = useState(false);
 
    if(tiep){
-    return <Navigate to={"/booking_detail"} replace/>
+    return <Navigate to={"/payment"} replace/>
    };
    
   return (
@@ -112,7 +112,7 @@ function Booking_Summary() {
                 </form>
                 <br/><br/>
                 <div class="bookconfirm">
-                    <a href="" onClick={() => setTiep(true)}>Tiếp tục</a>
+                    <a href="#" onClick={() => setTiep(true)}>Tiếp tục</a>
                 </div>
             </div>
 

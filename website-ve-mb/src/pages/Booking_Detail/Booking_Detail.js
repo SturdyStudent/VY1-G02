@@ -8,7 +8,7 @@ function Booking_Detail() {
     const [tiep, setTiep] = useState(false);
  
     if(tiep){
-     return <Navigate to={"/booking_detail"} replace/>
+     return <Navigate to={"/booking-summary"} replace/>
     };
     
   return (
@@ -64,7 +64,7 @@ function Booking_Detail() {
                 </form>
                 <br/><br/>
                 <div class="bookconfirm">
-                    <a href="" onClick={() => setTiep(true)}>Tiếp tục</a>
+                    <a href="#" onClick={() => setTiep(true)}>Tiếp tục</a>
                 </div>
             </div>
 

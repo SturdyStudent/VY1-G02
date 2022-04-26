@@ -7,8 +7,15 @@ import BookingRight from '../Booking_Right_FlightShort/Booking_Right'
 function Booking_Fill_Info() {
    const [tiep, setTiep] = useState(false);
 
+   function handleRedirect(e){
+        e.preventDefault();
+        setTiep(true);
+        if(tiep){
+            return <Navigate to={"/booking-detail"} replace/>
+           };
+   }
    if(tiep){
-    return <Navigate to={"/booking_detail"} replace/>
+    return <Navigate to={"/booking-detail"} replace/>
    };
 
   return (
@@ -103,7 +110,7 @@ function Booking_Fill_Info() {
                 </form>
                 <br/><br/>
                 <div class="bookconfirm">
-                    <a href="" onClick={() => setTiep(true)}>Tiếp tục</a>
+                    <a href="#" onClick={handleRedirect}>Tiếp tục</a>
                 </div>
             </div>
 

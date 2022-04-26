@@ -119,7 +119,7 @@ function FlightSearchResult() {
     }    
     
   return (
-    <div style={{"height":"700px"}}>
+    <div style={{"height":"900px"}}>
         <Header/>
         <div class="search-header">
             <div class="center-search">
