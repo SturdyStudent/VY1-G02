@@ -147,42 +147,43 @@ useEffect(()=>{
 }, [url])
   return (
     <div class="modal-background">
-      <div class='modal-container' style={{"width":"100%"}}>
-        <form id='modal-form'>
-          <div id='title' style={{"textAlign":"center"}}><h2><b>Cập nhật chuyến bay</b></h2></div>
-          <table class="table">
-            <tr class="tr">
-              <td class="td">
+      <div class="modal-container">
+        <form>
+          <div class="modal-title"><h2><b>Cập nhật chuyến bay</b></h2></div>
+          
+          <table class="modal-table">
+            <tr>
+              <td class="modal-table-left">
                 <div>Mã chuyến bay:</div>
                 <input type="text" maxLength={10} value={flightParams}></input>
               </td>
-              <td class="td">
+              <td>
                 <div>Trạng thái chuyến bay:</div>
                 <input type="text" maxLength={50} value={TrangThai} onChange={handleTrangThai}></input>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr >
+              <td>
                 <div>Số hiệu chuyến bay:</div>
                 <input type="text" maxLength={10} value={SoHieuChuyenBay} onChange={handleSoHieuChuyenBay}></input>
               </td>
-              <td class="td">
+              <td>
                 <div>Hãng Bay:</div>
                 <input type="text" maxLength={10} value={HangBay} onChange={handleHangBay}></input>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr >
+              <td>
                 <div>Ngày/giờ khởi hành:</div>
                 <input type="datetime-local" value={NgayGioKhoiHanh} onChange={handleNgayGioKhoiHanh}></input>
               </td>
-              <td class="td">
+              <td>
                 <div>Ngày/giờ đến nơi:</div>
                 <input type="datetime-local" value={NgayGioDen} onChange={handleNgayGioDen}></input>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr >
+              <td>
                 <div>Địa điểm khởi hành:</div><br/>
                   <select style={{"width":"200px", "height":"30px"}} onChange={handleDiaDiemKhoiHanh}>
                     <option value={DiaDiemKhoiHanh}>Không xác định</option>
@@ -191,7 +192,7 @@ useEffect(()=>{
                     ))}
                   </select> 
               </td>
-              <td class="td">
+              <td>
                 <div>Địa điểm đến:</div><br/>
                 <select style={{"width":"200px", "height":"30px"}} onChange={handleDiaDiemDen}>
                     <option value={DiaDiemDen}>Không xác định</option>
@@ -201,111 +202,111 @@ useEffect(()=>{
                   </select> 
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr >
+              <td>
                 <div>Giá vé:</div>
                 <div id='input-container'>
                   <span>VNĐ</span>
                   <input type="number" value={GiaVe} onChange={handleGiaVe}></input>
                 </div>
               </td>
-              <td class="td">
+              <td>
                 <div>Loại máy bay:</div>
                 <input type="text" value={LoaiMayBay} onChange={handleLoaiMayBay}></input>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr >
+              <td>
                 <div>Sơ đồ ghế ngồi:</div>
                 <input type="text" maxLength={10} value={SoDoGheNgoi} onChange={handleSoDoGheNgoi}></input>
               </td>
-              <td class="td">
+              <td>
                 <div>Khoảng cách ghế:</div>
                 <input type="number" value={KhoangCachGhe} onChange={handleKhoangCachGhe}></input>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td" style={{"marginRight":"200px"}}>
+            <tr >
+              <td style={{"marginRight":"200px"}}>
                 <div>Số vé:</div>
                 <input type="number" maxLength={10} value={TongSoVe} onChange={handleTongSoVe}></input>
               </td>
-              <td class="td">
+              <td>
               </td>
             </tr>
           </table>
           <hr style={{"height":"1.5px","backgroundColor":"gray"}}></hr>
           <h2 style={{"textAlign":"center"}}><b>Cập nhật Hạng Vé</b></h2>
           <table class="table">
-            <tr class="tr">
-              <td class="td">
+            <tr >
+              <td>
                 <div>Gía vé phổ thông:</div>
                 <input type="number" maxLength={10} value={PhoThong} onChange={handlePhoThong}></input>
               </td>
-              <td class="td">
+              <td>
                 <div>Số vé phổ thông:</div>
                 <input type="number" maxLength={10} value={SoVePhoThong} onChange={handleSoVePhoThong}></input>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr>
+              <td>
                 <div>Ưu đãi cho hạng vé phổ thông:</div><br/>
                 <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiPhoThong} onChange={handleUuDaiPhoThong}></textarea>
               </td>
-              <td class="td">
+              <td>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr>
+              <td>
                 <div>Gía vé phổ thông đặc biệt:</div>
                 <input type="number" maxLength={10} value={PhoThongDacBiet} onChange={handlePhoThongDacBiet}></input>
               </td>
-              <td class="td">
+              <td>
                 <div>Số vé phổ thông đặc biệt:</div>
                 <input type="number" maxLength={10} value={SoVeDacBiet} onChange={handleSoVeDacBiet}></input>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr>
+              <td>
                 <div>Ưu đãi cho hạng vé phổ thông đặc biệt:</div><br/>
                 <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiDacBiet} onChange={handleUuDaiDacBiet}></textarea>
               </td>
-              <td class="td">
+              <td>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr>
+              <td>
                 <div>Gía vé hạng nhất:</div>
                 <input type="number" maxLength={10} value={HangNhat} onChange={handleHangNhat}></input>
               </td>
-              <td class="td">
+              <td>
                 <div>Số vé hạng nhất:</div>
                 <input type="number" maxLength={10} value={SoVeHangNhat} onChange={handleSoVeHangNhat}></input>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr>
+              <td>
                 <div>Ưu đãi cho vé hạng nhất:</div><br/>
                 <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiHangNhat} onChange={handleUuDaiHangNhat}></textarea>
               </td>
-              <td class="td">
+              <td>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr>
+              <td>
                 <div>Gía vé thương gia:</div>
                 <input type="number" maxLength={10} value={ThuongGia} onChange={handleThuongGia}></input>
               </td>
-              <td class="td">
+              <td>
                 <div>Số vé hạng thương gia:</div>
                 <input type="number" maxLength={10} value={SoVeThuongGia} onChange={handleSoVeThuongGia}></input>
               </td>
             </tr>
-            <tr class="tr">
-              <td class="td">
+            <tr>
+              <td>
                 <div>Ưu đãi cho hạng vé thương gia:</div><br/>
                 <textarea style={{"width":"400px", "height":"100px"}} value={UuDaiThuongGia} onChange={handleUuDaiThuongGia}></textarea>
               </td>
-              <td class="td">
+              <td>
               </td>
             </tr>
           </table>

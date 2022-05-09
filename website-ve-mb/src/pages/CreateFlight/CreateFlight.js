@@ -38,8 +38,11 @@ const CreateFlight = () => {
   return (
     <div className='flight-container'>
       <div className='head-component'>
-        <div id='search-text'><b style={{"fontSize":"20px"}}>Tìm kiếm:</b> &nbsp; <input id='search-field'  type="text" placeholder='Nhập mã chuyến bay' style={{"borderRadius":"10px","paddingLeft":"15px"}}></input></div>
-        <button id='btnCreate' href="#" onClick={() => {setIsOpenModal(true)}}><b><Add/>Thêm chuyến bay</b></button>
+        <div id='search-text'>
+          <b style={{"fontSize":"20px"}}>Tìm kiếm:</b> &nbsp; 
+          <input id='search-field'  type="text" placeholder='Nhập mã chuyến bay' style={{"borderRadius":"10px","paddingLeft":"15px"}}></input>
+        </div>
+        <button class="btnCreateFlight" href="#" onClick={() => {setIsOpenModal(true)}}><span><Add/></span><b>Thêm chuyến bay</b></button>
       </div>
       {openModal &&  <FlightModal closeModal={setIsOpenModal} />}
       <hr style={{"height":"1px", "backgroundColor":"#707070"}}></hr>

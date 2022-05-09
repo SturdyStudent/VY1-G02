@@ -33,9 +33,6 @@ function App() {
             <Route path="/prebooking" element={<PreBooking/>}/>
           </Routes>
         </Router> 
-        <div className='search-footer'>
-        <Footer/>
-        </div>
     </div>
   );
 }

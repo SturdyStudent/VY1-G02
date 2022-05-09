@@ -1,14 +1,14 @@
 import React, {useState,useEffect} from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import '../Booking_Detail/Booking_Detail.css'
 import Header from '../../components/header'
 import BookingRight from '../Booking_Right_FlightShort/Booking_Right'
 
 function Booking_Fill_Info() {
-   const [tiep, setTiep] = useState(false);
+    const [tiep, setTiep] = useState(false);
 
    if(tiep){
-    return <Navigate to={"/booking_detail"} replace/>
+    return <Navigate to={"/booking-detail"} replace/>
    };
 
   return (
@@ -103,7 +103,7 @@ function Booking_Fill_Info() {
                 </form>
                 <br/><br/>
                 <div class="bookconfirm">
-                    <a href="" onClick={() => setTiep(true)}>Tiếp tục</a>
+                    <a href="#" onClick={() => setTiep(true)}>Tiếp tục</a>
                 </div>
             </div>
 
