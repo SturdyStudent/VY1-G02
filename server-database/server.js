@@ -8,7 +8,7 @@
 
  app.use(body_parser.json());
  app.use(body_parser.urlencoded({ extended: true }));//dùng khi cần post dữ liệu dạng json
-app.use(cors());
+ app.use(cors());
  app.use("/api/partner", partnerRoute);
 //  app.use("/api/seat-class", seatClassRoute);
 // // set port, listen for requests

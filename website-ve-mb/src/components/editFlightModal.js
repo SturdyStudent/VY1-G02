@@ -147,7 +147,7 @@ useEffect(()=>{
 }, [url])
   return (
     <div class="modal-background">
-      <div class='modal-container' style={{"width":"100%"}}>
+      <div class='modal-container'>
         <form id='modal-form'>
           <div id='title' style={{"textAlign":"center"}}><h2><b>Cập nhật chuyến bay</b></h2></div>
           <table class="table">

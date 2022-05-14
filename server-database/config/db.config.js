@@ -1,7 +1,7 @@
 module.exports = {
-    user: "thanhdat",
+    user: "sa",
     password: "starlord251",
-    server: "localhost",
+    server: "5.22.221.219",
     database: "QLChuyenBay", //tên database
     port: 1433,
     options: {
@@ -10,4 +10,4 @@ module.exports = {
         instancename: 'DESKTOP-JEDQHDP',
         trustServerCertificate: true
     }
-  };
+};
