@@ -1,11 +1,11 @@
 import React, {useState,useEffect} from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import '../Booking_Detail/Booking_Detail.css'
 import Header from '../../components/header'
 import BookingRight from '../Booking_Right_FlightShort/Booking_Right'
 
 function Booking_Fill_Info() {
-   const [tiep, setTiep] = useState(false);
+    const [tiep, setTiep] = useState(false);
 
    function handleRedirect(e){
         e.preventDefault();
@@ -110,7 +110,11 @@ function Booking_Fill_Info() {
                 </form>
                 <br/><br/>
                 <div class="bookconfirm">
+<<<<<<< HEAD
+                    <a href="#" onClick={() => setTiep(true)}>Tiếp tục</a>
+=======
                     <a href="#" onClick={handleRedirect}>Tiếp tục</a>
+>>>>>>> 2c5dd3c35e04c1a0bd909b02d21d80fbc4a3f929
                 </div>
             </div>
 
