@@ -110,11 +110,7 @@ function Booking_Fill_Info() {
                 </form>
                 <br/><br/>
                 <div class="bookconfirm">
-<<<<<<< HEAD
-                    <a href="#" onClick={() => setTiep(true)}>Tiếp tục</a>
-=======
                     <a href="#" onClick={handleRedirect}>Tiếp tục</a>
->>>>>>> 2c5dd3c35e04c1a0bd909b02d21d80fbc4a3f929
                 </div>
             </div>
 
