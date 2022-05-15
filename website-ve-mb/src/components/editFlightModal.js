@@ -147,12 +147,13 @@ useEffect(()=>{
 }, [url])
   return (
     <div class="modal-background">
-      <div class='modal-container'>
-        <form id='modal-form'>
-          <div id='title' style={{"textAlign":"center"}}><h2><b>Cập nhật chuyến bay</b></h2></div>
-          <table class="table">
-            <tr class="tr">
-              <td class="td">
+      <div class="modal-container">
+        <form>
+          <div class="modal-title"><h2><b>Cập nhật chuyến bay</b></h2></div>
+          
+          <table class="modal-table">
+            <tr>
+              <td class="modal-table-left">
                 <div>Mã chuyến bay:</div>
                 <input type="text" maxLength={10} value={flightParams}></input>
               </td>

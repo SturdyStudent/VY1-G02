@@ -4,9 +4,10 @@ import { Navigate } from 'react-router-dom';
 import Header from '../../components/header'
 import axios from 'axios';
 import './PartnerLoginPage.css'
+import { axiosConfig } from '../../axiosConfig';
 
 function PartnerLoginPage() {
-  const loginUrl = "http://localhost:3001/api/partner/partner-login";
+  const loginUrl = `${axiosConfig.url}partner-login`;
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -25,7 +26,7 @@ function PartnerLoginPage() {
   const handleLogin = (e) =>{
     axios.post(loginUrl, {
       username: username,
-      password:password
+      password: password
     }).then((res)=>{
       localStorage.setItem('LOGIN_INFORMATION', JSON.stringify(res.data));
       if(res.data.toString().length > 0) {

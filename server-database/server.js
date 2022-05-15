@@ -4,7 +4,6 @@
  const app = express();
  const body_parser = require('body-parser');
  const cors = require('cors');
- const dbOperations = require('./controllers/partnerController');
 
  app.use(body_parser.json());
  app.use(body_parser.urlencoded({ extended: true }));//dùng khi cần post dữ liệu dạng json

@@ -1,6 +1,7 @@
 import React from 'react'
 import SmallFlight from '../../assets/images/small_flight.png';
-import VietJet from '../../assets/images/vietjet.png';
+import Vietjet from '../../assets/images/vietjet.png';
+
 import '../Booking_Detail/Booking_Detail.css'
 
 function BookingRight() {
@@ -23,7 +24,7 @@ function BookingRight() {
                 </td></tr>
                 <tr>
                     <td colSpan={3}>
-                        <img src={VietJet} width="80px" height="40px" style={{"float": "left"}}/>
+                        <img src={Vietjet} width="80px" height="40px" style={{"float": "left"}}/>
                         <span>
                             Bamboo Airways<br/>
                             <div class="seatclassnote">Phổ thông</div>
