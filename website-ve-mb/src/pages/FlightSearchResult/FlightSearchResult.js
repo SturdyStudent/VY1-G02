@@ -9,11 +9,12 @@ import viLocale from 'date-fns/locale/vi'
 import Line from '../../assets/images/line.png'
 import './FlightSearchResult.css';
 import axios from 'axios';
+import { axiosConfig } from '../../axiosConfig';
 
 function FlightSearchResult() {
-    const getFlightUrl = "http://localhost:3001/api/partner/getFlights/query";
-    const getPartnerUrl = "http://localhost:3001/api/partner/getPartners";
-    const getSeatClassUrl = "http://localhost:3001/api/partner/getSeatClass";
+    const getFlightUrl = `${axiosConfig.url}getFlights/query`;
+    const getPartnerUrl = `${axiosConfig.url}getPartners`;
+    const getSeatClassUrl = `${axiosConfig.url}getSeatClass`;
     const flightSearchInfo = JSON.parse(localStorage.getItem("SEARCH_INFO"));
     const formatSearchNgayDi = format(new Date(flightSearchInfo.NgayDi), "iii, dd 'Thg' MM yyyy",{
         locale: viLocale
