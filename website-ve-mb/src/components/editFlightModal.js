@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import './FlightModal.css';
 import axios from 'axios';
+import { axiosConfig } from '../axiosConfig';
 
 const EditFlightModal = ({flightParams}) => {
 
-  const url = "http://localhost:3001/api/partner/getLocations";
-  const getFlighstUrl = `http://localhost:3001/api/partner/getFlights/${flightParams}`;
-  const getSeatClassUrl = `http://localhost:3001/api/partner/getSeatClass/${flightParams}`;
+  const url = `${axiosConfig.url}getLocations`;
+  const getFlighstUrl = `${axiosConfig.url}getFlights/${flightParams}`;
+  const getSeatClassUrl = `${axiosConfig.url}getSeatClass/${flightParams}`;
   
   const [locations, setLocations] = useState(null);
   const [flightInfo, setFlightInfo] = useState(null);
@@ -135,22 +136,23 @@ const EditFlightModal = ({flightParams}) => {
   }, [url])
   useEffect(()=>{
     axios.get(getFlighstUrl)
-    .then(response => {
-       handleGetFlights(response.data[0]);
+    .then(response => {//đã vào được port nhưng ko biết có lấy được ko
+      let data = response.data;
+      console.log("data", data);
+       handleGetFlights(response.data);
     })
-}, [url])
+}, [getFlighstUrl])
 useEffect(()=>{
   axios.get(getSeatClassUrl)
   .then(response => {
-     handleGetSeatClass(response.data[0]);
+     handleGetSeatClass(response.data);
   })
-}, [url])
+}, [getSeatClassUrl])
   return (
     <div class="modal-background">
       <div class="modal-container">
         <form>
           <div class="modal-title"><h2><b>Cập nhật chuyến bay</b></h2></div>
-          
           <table class="modal-table">
             <tr>
               <td class="modal-table-left">
