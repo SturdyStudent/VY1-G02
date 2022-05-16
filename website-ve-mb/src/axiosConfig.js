@@ -1,5 +1,5 @@
 const axiosConfig = {
-    url: 'http://localhost:3001/api/partner/', 
+    url: 'http://webchuyenbayg02.com:3001/api/partner/', 
  }
  
  export {
