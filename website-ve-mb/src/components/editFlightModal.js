@@ -137,8 +137,6 @@ const EditFlightModal = ({flightParams}) => {
   useEffect(()=>{
     axios.get(getFlighstUrl)
     .then(response => {//đã vào được port nhưng ko biết có lấy được ko
-      let data = response.data;
-      console.log("data", data);
        handleGetFlights(response.data);
     })
 }, [getFlighstUrl])
