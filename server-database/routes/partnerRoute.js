@@ -23,7 +23,7 @@ route.post("/getFlights/query",(req, res)=>{
 })
 route.get("/getFlights/:id", (req, res)=>{
     partnerController.getFlightById(req.params.id).then(result => {
-        res.send(result);
+        res.send(JSON.stringify(result[0][0]));
     })
 })
 route.post("/getFlights", (req, res)=>{
