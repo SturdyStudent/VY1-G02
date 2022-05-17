@@ -5,6 +5,7 @@ go
 use QLChuyenBay
 go
 
+/*QLChuyenBay*/
 CREATE table [ChuyenBay]
 (
 	[MaChuyenBay] Integer NOT NULL IDENTITY(1, 1),
@@ -51,7 +52,7 @@ Create table [LoaiHangVe]
 	[UuDaiHangNhat] Ntext NULL,
 	[SoVeHangNhat] Smallint NULL,
 	[MaChuyenBay] Integer NOT NULL,
-Primary Key ([MaChuyenBay])
+	Primary Key ([MaChuyenBay])
 ) 
 go
 
@@ -63,19 +64,115 @@ Create table [GiaHanhLiMuaThem]
 ) 
 go
 
+/*Create Table HanhLy
+(
+	MaVeHangBay 1--n HanhKhach
+	MaHanhKhach
+	SoKy (vd: 15kg)
+		Dua vao HangBay va HangVe
+	GiaSoky (vd: 50.000d)
+	SoLuong (vd: 2)
+	GiaTien = GiaSoky * SoLuong (vd: 50.000 * 2)
+	TongTien = nGiaTien
+)*/
+
+Create table DoanhThuTheoThang
+(
+	MaBangDoanhThu Char(10) NOT NULL,
+	SoVeBanRa Integer,
+	SoChuyenBay Integer,
+	LoiNhuanBanVe Decimal(13,3),
+	TongTienThuDuoc Decimal(13,3),
+	ThangHienTai smalldatetime,
+	MaHangBay Varchar(10) NOT NULL,
+	Primary Key(MaBangDoanhThu)
+)
+
+Create Table ThongTinHanhKhach
+(
+	MaHanhKhach varchar (6) not null primary key,
+	DanhXung nvarchar(10) not null,
+	Ho nvarchar(200) not null,
+	TenDemVaTen nvarchar (30) not null,
+	NgaySinh datetime not null,
+	QuocTich varchar(10) not null,
+	SoHanhLiMuaThem int,
+	GiaTienHanhLi decimal(13,3),
+	MaNguoiLienHe varchar (6) not null,
+	MaChuyenBay Integer NOT NULL IDENTITY(1, 1)
+	/*SoDienThoaiHK varchar (15) not null,
+	SoCMND varchar (9) not null,*/
+)
+
+Create Table NguoiLienHe
+(
+	MaNguoiLienHe varchar (6) not null primary key,
+	MaNguoiDung varchar (6) not null,
+	Ho nvarchar(200) not null,
+	TenDemVaTen nvarchar (30) not null,
+	SoDienThoai varchar(15) not null,
+	Email varchar(50) not null,
+	MaQuocGia varchar(10) not null,
+	MaChuyenBay Integer NOT NULL IDENTITY(1, 1)
+)
+/*lay tu profile*/
+Create Table NguoiDung
+(
+	MaNguoiDung varchar (6) NOT NULL Primary Key,
+	DanhXung nvarchar(10) not null,
+	Ho nvarchar(200) not null,
+	TenDemVaTen nvarchar (30) not null,
+	SoDienThoai varchar(15) not null,
+	Email varchar(50) not null,
+	MaQuocGia varchar(10) not null,
+	NgaySinh datetime not null,
+	QuocTich varchar(10) not null,
+)
+
+Create Table VeDienTu
+(
+	MaDatCho varchar(6) NOT NULL,
+	MaKhuyenMai Char(10) NOT NULL,
+	TrangThaiThanhToan NVarchar (20) not null,
+	GiaVe Decimal(13,3) not null,
+	MaChuyenBay Integer NOT NULL IDENTITY(1, 1),
+	MaNguoiLienHe varchar (6) not null,
+	Primary Key (MaDatCho, MaNguoiLienHe)
+)
+
 Create table [DiaDiem]
 (
 	[MaDiaDiem] Char(4),
 	[TenDiaDiem] NVarchar(50),
-	[TenSanBay] NVarchar(50)
+	[TenSanBay] NVarchar(50),
+	Primary Key([MaDiaDiem])
 )
 go
 
-Create table
+Create table [MaKhuyenMai]
+(
+	[MaKhuyenMai] Char(10) NOT NULL,
+	[ThoiHanKhuyenMai] datetime,
+	[TinhTrangMa] Char(15),
+	[PhanTramGiamGia] Decimal(4,3),
+	[SoTienGiamGia] Decimal(13,3),
+	[SoLuongMa] Int,
+	Primary Key([MaKhuyenMai])
+)
 
-Alter table [LoaiHangVe] add  foreign key([MaChuyenBay]) references [ChuyenBay] ([MaChuyenBay])  on update no action on delete no action 
+Alter table [LoaiHangVe] add foreign key([MaChuyenBay]) references [ChuyenBay] ([MaChuyenBay]) on update no action on delete no action 
+go
+Alter table ThongTinHanhKhach add foreign key (MaChuyenBay) references ChuyenBay (MaChuyenBay)
+go
+Alter table ThongTinHanhKhach add foreign key (MaNguoiLienHe) references NguoiLienHe (MaNguoiLienHe)
+go
+Alter table NguoiLienHe add foreign key (MaNguoiDung) references NguoiDung (MaNguoiDung)
+go
+Alter table VeDienTu add foreign key (MaNguoiLienHe) references NguoiLienHe (MaNguoiLienHe)
 go
 Alter table [ChuyenBay] add foreign key([HangBay]) references [HangBay] ([MaHangBay]) on update no action on delete no action
+go
+Alter table DoanhThuTheoThang add foreign key (MaHangBay) references HangBay (MaHangBay)
 go
 Alter table [GiaHanhLiMuaThem] add foreign key([MaHangBay]) references [HangBay] ([MaHangBay]) on update no action on delete no action
 go

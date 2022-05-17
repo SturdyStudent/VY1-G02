@@ -87,4 +87,6 @@ route.post("/partner-login", (req, res)=>{
         res.status(203).send(result[0][0]);
     })
 })
+
+//lấy người liên hệ
 module.exports = route;
