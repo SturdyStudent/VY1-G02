@@ -23,7 +23,7 @@ route.post("/getFlights/query",(req, res)=>{
 })
 route.get("/getFlights/:id", (req, res)=>{
     partnerController.getFlightById(req.params.id).then(result => {
-        res.send(result);
+        res.send(JSON.stringify(result[0][0]));
     })
 })
 route.post("/getFlights", (req, res)=>{
@@ -42,7 +42,7 @@ route.put("/getFlights/:id", (req, res)=>{
 })
 route.delete("/getFlights/:id", (req, res)=>{
     partnerController.deleteFlight(req.params.id).then(result =>{
-        res.status(202).send(result);
+        res.status(202).send(JSON.stringify(result[0][0]));
     })
 })
 //lấy loại hạng vé
@@ -53,7 +53,7 @@ route.get("/getSeatClass", (req, res)=>{
 })
 route.get("/getSeatClass/:id", (req, res)=>{
     partnerController.getSeatClassById(req.params.id).then(result => {
-        res.send(result[0]);
+        res.send(JSON.stringify(result[0][0]));
     })
 })
 //lấy địa điểm
@@ -87,6 +87,4 @@ route.post("/partner-login", (req, res)=>{
         res.status(203).send(result[0][0]);
     })
 })
-
-//lấy người liên hệ
 module.exports = route;

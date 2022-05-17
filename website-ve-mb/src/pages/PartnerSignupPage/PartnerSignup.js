@@ -4,6 +4,7 @@ import Header from '../../components/header'
 import {Navigate} from 'react-router-dom';
 import axios from 'axios';
 import '../PartnerLoginPage/PartnerLoginPage.css'
+import { axiosConfig } from '../../axiosConfig';
 
 function PartnerSignup() {
 const [MaHangBay, setMaHangBay] = useState('');
@@ -13,7 +14,7 @@ const [HinhAnhHangBay, setHInhAnhHangBay] = useState();
 const [MatKhau, setMatKhau] = useState('');
 const [SoHanhLi, setSoHanhLi] = useState();
 const [redirectHome,setRedirectHome] = useState(false);
-const registerPartner = "http://localhost:3001/api/partner/getPartners";
+const registerPartner = `${axiosConfig}getPartners`;
 
 if(redirectHome){// chuyển hướng đến trang partner sau khi đăng kí thành công
     return <Navigate to={'/partner'} replace/>

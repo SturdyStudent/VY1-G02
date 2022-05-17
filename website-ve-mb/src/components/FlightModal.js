@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import './FlightModal.css'
 import axios from 'axios';
+import { axiosConfig } from '../axiosConfig';
 
 function FlightModal({closeModal}) {
   
-  const url = "http://localhost:3001/api/partner/getLocations";
-  const addFlightUrl = "http://localhost:3001/api/partner/getFlights";
+  const url = `${axiosConfig.url}getLocations`;
+  const addFlightUrl = `${axiosConfig.url}getFlights`;
   
   const [locations, setLocations] = useState(null);
   const [SoHieuChuyenBay, setSoHieuChuyenBay] = useState();

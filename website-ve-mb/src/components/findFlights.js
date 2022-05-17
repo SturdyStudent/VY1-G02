@@ -2,8 +2,7 @@ import { FlightLand, FlightTakeoff, Group, AirlineSeatReclineNormal } from '@mat
 import React, {useState,useEffect} from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
-import Modal from 'react-modal';
-import format from 'date-fns/format';
+import { axiosConfig } from '../axiosConfig';
 import Minus from '../assets/images/minus.png'
 import Add from '../assets/images/add.png'
 import Partnership from '../assets/images/partner_pic.jpg'
@@ -14,7 +13,7 @@ import SearchIcon from '../assets/images/search_icon.png'
 import './findFlights.css';
 
 function FindFlights() {
-    const url = "http://localhost:3001/api/partner/getLocations";
+    const url = `${axiosConfig.url}getLocations`;
 
     var curr = new Date();
     var date = curr.toISOString().slice(0, 10);

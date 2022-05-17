@@ -5,7 +5,7 @@ import FlightModal from '../../components/FlightModal'
 import EditFlightModal from '../../components/editFlightModal'
 import axios from 'axios';
 import Modal from 'react-modal';
-import Fade from '@material-ui/core/Fade';
+import { axiosConfig } from '../../axiosConfig'
 
 const CreateFlight = () => {
   const [openModal, setIsOpenModal] = useState(false);
@@ -22,7 +22,7 @@ const CreateFlight = () => {
   }
 
   const partnerJson = JSON.parse(localStorage.getItem("LOGIN_INFORMATION"));
-  const url = `http://localhost:3001/api/partner/getPartnerFlights/${partnerJson.MaHangBay}`;
+  const url = `${axiosConfig.url}getPartnerFlights/${partnerJson.MaHangBay}`;
   useEffect(()=>{
       axios.get(url)
       .then(response => {
@@ -30,7 +30,7 @@ const CreateFlight = () => {
       })
   }, [url])
   const HandleDeleteInfo = (flightId) =>{
-        axios.delete(`http://localhost:3001/api/partner/getFlights/${flightId}`)
+        axios.delete(`${axiosConfig.url}getFlights/${flightId}`)
         .then(response => {
           window.location.reload();
         }).catch(err=> console.log(err))

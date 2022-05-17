@@ -130,6 +130,15 @@ insert into ChuyenBay( SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoi
 values ('VJ 543', 'OSAA', 'SYD', '2022-10-04 00:00:00.000', '2022-10-04 02:00:00.000', 100, 865000, '3-3', 30, 'Airbus A321', N'Đã cất cánh', 'VJ')
 insert into ChuyenBay( SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
 values ('QH 6534', 'MNL', 'OSAA', '2022-10-04 00:00:00.000', '2022-10-04 02:00:00.000', 100, 900000, '3-3', 33, 'Boeing 787', N'Đã cất cánh', 'QH')
+insert into ChuyenBay( SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('QH 6534', 'MNL', 'OSAA', '2022-04-26 00:00:00.000', '2022-04-26 02:00:00.000', 100, 900000, '3-3', 33, 'Boeing 787', N'Đã cất cánh', 'QH')
+insert into ChuyenBay( SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('VJ 6456', 'MNL', 'OSAA', '2022-04-26 00:00:00.000', '2022-04-26 02:00:00.000', 100, 900000, '3-3', 33, 'Boeing A321', N'Đã cất cánh', 'VJ')
+insert into ChuyenBay( SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('BL 6123', 'MNL', 'OSAA', '2022-04-26 00:00:00.000', '2022-04-26 02:00:00.000', 100, 1400000, '3-3', 33, 'Boeing 787', N'Đã cất cánh', 'BL')
+insert into ChuyenBay( SoHieuChuyenBay, DiaDiemKhoiHanh, DiaDiemDen, NgayGioKhoiHanh, NgayGioDen, TongSoVe, GiaVe, SoDoGheNgoi, KhoangCachGhe, LoaiMayBay, TrangThai, HangBay)
+values ('AA 2434', 'MNL', 'OSAA', '2022-04-26 00:00:00.000', '2022-04-26 02:00:00.000', 100, 1250000, '3-3', 33, 'ATR 72500', N'Đã cất cánh', 'AA')
+
 
 create PROCEDURE [dbo].[spChuyenBay_addFlights] 
 	-- Add the parameters for the stored procedure here
