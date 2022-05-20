@@ -1,5 +1,5 @@
 const axiosConfig = {
-    url: 'http://157.245.207.242:3002/api/partner/', 
+    url: 'http://139.59.115.150:3000//api/partner/', 
  }
  
  export {
