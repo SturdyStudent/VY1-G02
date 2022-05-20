@@ -1,7 +1,7 @@
 module.exports = {
     user: "sa",
     password: "starlord251",
-    server: "5.22.221.219",
+    server: "139.59.115.150",
     database: "QLChuyenBay", //tên database
     port: 1433,
     options: {
