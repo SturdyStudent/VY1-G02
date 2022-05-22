@@ -5,19 +5,28 @@ import Header from '../../components/header'
 import BookingRight from '../Booking_Right_FlightShort/Booking_Right'
 
 function Booking_Fill_Info() {
-    const [tiep, setTiep] = useState(false);
+    let flightInfo = JSON.parse(localStorage.getItem("SUMMARY_INFO"));
+    let searchInfo = JSON.parse(localStorage.getItem("SEARCH_INFO"));
 
+    const clientArray = [];
+
+    
    function handleRedirect(e){
         e.preventDefault();
-        setTiep(true);
-        if(tiep){
-            return <Navigate to={"/booking-detail"} replace/>
-           };
+        return <Navigate to={"/booking-detail"} replace/>
    }
-   if(tiep){
-    return <Navigate to={"/booking-detail"} replace/>
-   };
-
+   function addItems(){
+        const forms = document.querySelectorAll("form");
+        const output = [];
+        forms.forEach(form => {
+            output.push({
+                form: form.dataset.category,
+                inputData: Object.fromEntries(new FormData(form)),
+            });
+        });
+    
+        console.log("data", output);
+   }
   return (
     <div>
     <Header/>
@@ -64,12 +73,12 @@ function Booking_Fill_Info() {
                         </tr>
                     </table>
                 </form>
-            
                 <h2>Thông tin hành khách</h2>
-                <form>
+                {[...Array(searchInfo.NguoiLon)].map((elementInArray, Index) => {
+                    return  <form >
                     <table class="bookinfo">
                         <tr>
-                            <th class="booktitle">Người đặt 1</th>
+                            <th class="booktitle">Người lớn {Index + 1}</th>
                             <th class="bookfix">
                                 <button class="bookfixbttn" id='button'>Lưu</button>
                             </th>
@@ -108,13 +117,99 @@ function Booking_Fill_Info() {
                         </tr>
                     </table>
                 </form>
+                })}
+                          {[...Array(searchInfo.TreEm)].map((elementInArray, Index) => {
+                return <form>
+                    <table class="bookinfo">
+                        <tr>
+                            <th class="booktitle">Trẻ em {Index + 1}</th>
+                            <th class="bookfix">
+                                <button class="bookfixbttn" id='button'>Lưu</button>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br/><label for="xungnhat">Danh xưng</label>
+                                <select id="xungnhat" name="xung">
+                                    <option value="null"></option>
+                                    <option value="ong"> Ông </option>
+                                    <option value="ba"> Bà </option>
+                                    <option value="be"> Bé </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br/><label for="honhat">Họ (vd: Nguyen)</label><br/>
+                                <input type="text" id="honhat" name="ho"/><br/>
+                                <p class="note">như trên CMND (không dấu)</p>
+                            </td>
+                            <td>
+                                <br/><label for="tennhat">Tên Đệm & Tên (vd: Thi An)</label><br/>
+                                <input type="text" id="tennhat" name="ten"/><br/>
+                                <p class="note">như trên CMND (không dấu)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>
+                                <label for="sinhnhat">Ngày sinh</label><br/>
+                                <input type="text" id="sinhnhat" name="sinh"/><br/>
+                                <p class="note">hành khách trẻ em (trên 2 tuổi)</p>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </form>})}
+                {[...Array(searchInfo.EmBe)].map((elementInArray, Index) => {
+                 return <form>
+                    <table class="bookinfo">
+                        <tr>
+                            <th class="booktitle">Em bé {Index + 1}</th>
+                            <th class="bookfix">
+                                <button class="bookfixbttn" id='button'>Lưu</button>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br/><label for="xungnhat">Danh xưng</label>
+                                <select id="xungnhat" name="xung">
+                                    <option value="null"></option>
+                                    <option value="ong"> Ông </option>
+                                    <option value="ba"> Bà </option>
+                                    <option value="be"> Bé </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br/><label for="honhat">Họ (vd: Nguyen)</label><br/>
+                                <input type="text" id="honhat" name="ho"/><br/>
+                                <p class="note">như trên CMND (không dấu)</p>
+                            </td>
+                            <td>
+                                <br/><label for="tennhat">Tên Đệm & Tên (vd: Thi An)</label><br/>
+                                <input type="text" id="tennhat" name="ten"/><br/>
+                                <p class="note">như trên CMND (không dấu)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>
+                                <label for="sinhnhat">Ngày sinh</label><br/>
+                                <input type="text" id="sinhnhat" name="sinh"/><br/>
+                                <p class="note">hành khách em bé (dưới 3 tuổi)</p>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </form>})}
                 <br/><br/>
                 <div class="bookconfirm">
-                    <a href="#" onClick={handleRedirect}>Tiếp tục</a>
+                    <a href="#" onClick={addItems()}>Tiếp tục</a>
                 </div>
             </div>
-
-            <BookingRight/>
+        <BookingRight/>
         </div>
     </div>
   )

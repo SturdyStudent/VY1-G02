@@ -8,13 +8,12 @@ import Vietjet from '../../assets/images/vietjet.png';
 import '../Booking_Detail/Booking_Detail.css'
 
 function BookingRight() {
-
     let flightInfo = JSON.parse(localStorage.getItem("SUMMARY_INFO"));
     let searchInfo = JSON.parse(localStorage.getItem("SEARCH_INFO"));
 
     const [locations, setLocations] = useState(null);
-    const [startLocation, setStartLocation] = useState(",");
-    const [endLocation, setEndLocation] = useState(",");
+    const [startLocation, setStartLocation] = useState("");
+    const [endLocation, setEndLocation] = useState();
     const [partnerName, setPartnerName] = useState(null);
     const getPartnerUrl = `${axiosConfig.url}getPartners`;
     const locationUrl = `${axiosConfig.url}getLocations`;
@@ -56,22 +55,21 @@ function BookingRight() {
                 <tr>
                     <th colSpan={2}>
                         <img src={SmallFlight} width="40px" height="40px"/>
-                        {startLocation && <span>{startLocation.split(",")[0]} → {endLocation.split(",")[0]}</span>}
+                        <span>{startLocation.split(",")[0]} → {endLocation.split(",")[0]}</span>
                     </th>
                     <th>
-
-                        <div>Chi tiết</div>
+                        <div>Chi&nbsp;tiết</div>
                     </th>
                     <th></th>
                 </tr>
                 <tr><td colSpan={3}>
-                        <span>Chuyến bay đi • {formatSearchNgayDi}</span>
+                        <span>Chuyến bay đi • Tue, 26 Apr 2022</span>
                 </td></tr>
                 <tr>
                     <td colSpan={3}>
                         <img src={Vietjet} width="80px" height="40px" style={{"float": "left"}}/>
                         <span>
-                            {partnerName}<br/>
+                            {}<br/>
                             <div class="seatclassnote">{searchInfo.HangGhe}</div>
                         </span>
                     </td>
@@ -82,7 +80,7 @@ function BookingRight() {
                         {flightInfo.DiaDiemKhoiHanh}
                     </td>
                     <td>
-                        {round}h{spare}m<br/>
+                        1h30m<br/>
                         Bay thẳng
                     </td>
                     <td>

@@ -8,7 +8,7 @@ import Detail from '../../assets/images/detail.png'
 import Line from '../../assets/images/line.png'
 import {format} from 'date-fns';
 import viLocale from 'date-fns/locale/vi'
-import { Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router'
 import Checked from '../../assets/images/checked.png'
 import { axiosConfig } from '../../axiosConfig'
 import './PreBooking.css'
@@ -136,15 +136,15 @@ return (
                         <hr/>
                         {searchInfo && <div className='prebooking-summary-adult prebooking-summary-item'>
                             <div>{partnerName} (Người lớn) x{searchInfo.NguoiLon}</div>
-                            <div>VNĐ {flightInfo.GiaVe * searchInfo.NguoiLon}</div>
+                            <div>VNĐ {flightInfo.GiaVe}</div>
                         </div>}
                         {searchInfo && <div className='prebooking-summary-adult prebooking-summary-item'>
                             <div>{partnerName} (Trẻ em) x{searchInfo.TreEm}</div>
-                            <div>VNĐ {flightInfo.GiaVe * 75 / 100 * searchInfo.TreEm}</div>
+                            <div>VNĐ {flightInfo.GiaVe * 75 / 100}</div>
                         </div>}
                         {searchInfo && <div className='prebooking-summary-adult prebooking-summary-item'>
                             <div>{partnerName} (Em bé) x{searchInfo.EmBe}</div>
-                            <div>VNĐ {flightInfo.GiaVe * 25 / 100 * searchInfo.EmBe}</div>
+                            <div>VNĐ {flightInfo.GiaVe * 25 / 100}</div>
                         </div>}
                         <div className='prebooking-summary-total-price prebooking-summary-item'>
                             <div>Gía bạn trả</div>

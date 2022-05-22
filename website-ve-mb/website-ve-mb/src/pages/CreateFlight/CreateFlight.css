@@ -1,0 +1,81 @@
+.flight-container{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.create-flight-table{
+    margin-left: 30px;
+}
+.head-component{
+    padding-top: 20px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#search-text{
+    font-size: 17px;
+    
+}
+.btnCreateFlight{
+    color: white;
+    background-color: #FF8000;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+}
+.btnCreateFlight:hover{
+    background-color: #ffbb77;
+}
+.btnCreateFlight b{
+    padding-left: 25px;
+}
+.btnCreateFlight span{
+    position: absolute;
+}
+
+.createfly{
+    width: 1100px;
+    margin-left: 70px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+.createfly th, .createfly td{
+    border: 1px solid black;
+}
+.createfly th:nth-child(1){
+    width: 130px;
+}
+.createfly th:nth-child(2){
+    width: 400px;
+}
+.createfly th:nth-child(3){
+    width: 185px;
+}
+.createfly th:nth-child(4){
+    width: 185px;
+}
+.createfly th:nth-child(5){
+    width: 200px;
+}
+.createfly td div button{
+    background-color: #FF8000;
+    border: none;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 10px;
+}
+.createfly td div button:hover{
+    background-color: #bb9166;
+}
+.createfly td{
+    padding: 10px;
+}
+#flight-info{
+    text-align: left;
+    padding-left: 20px;
+}
