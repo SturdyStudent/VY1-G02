@@ -6,11 +6,15 @@ import BookingRight from '../Booking_Right_FlightShort/Booking_Right'
 
 function Booking_Detail() {
     const [tiep, setTiep] = useState(false);
- 
+    let summaryInfo = JSON.parse(localStorage.getItem("SUMMARY_INFO"));
+    let searchInfo = JSON.parse(localStorage.getItem("SEARCH_INFO"));
+    let clientInfo = localStorage.getItem("CLIENT_INFO");
+    const clientData = JSON.parse(clientInfo);
+
     if(tiep){
      return <Navigate to={"/booking-summary"} replace/>
     };
-    
+    // console.log("realdata", realdata[0].inputData.holh);
   return (
       <div>
       <Header/>
@@ -31,29 +35,30 @@ function Booking_Detail() {
                         <tr>
                             <td>
                                 <p>Số di động<br/>
-                                +84901234567</p>
+                                +{clientData[0].inputData.dtlh}</p>
                             </td>
                             <td>
                                 <p>Email<br/>
-                                abc123@email.com</p>
+                                {clientData[0].inputData.maillh}</p>
                             </td>
                         </tr>
                     </table>
                 </form>
 
                 <h2>Thông tin hành khách</h2>
-                <form>
+                {[...Array(searchInfo.NguoiLon + searchInfo.TreEm + searchInfo.EmBe)].map((elementInArray, Index) => {
+                    return  <form>
                     <table class="bookinfo">
                         <tr>
-                            <th class="booktitle">Họ và tên người đặt 1</th>
-                            <th class="bookfix">
-                                <button class="bookfixbttn" id='button'>Chỉnh sửa</button>
+                            <th class="booktitle">{clientData[Index + 1].inputData.xung} {clientData[Index + 1].inputData.ho} {clientData[Index + 1].inputData.ten}</th>
+                            <th class="bookfix ">
+                                <button class="bookfixbttn" id='bookfixbttn'>Chỉnh sửa</button>
                             </th>
                         </tr>
                         <tr>
                             <td>
                                 <p>Ngày sinh<br/>
-                                01 tháng 01 2001</p>
+                                {clientData[Index + 1].inputData.sinh}</p>
                             </td>
                             <td>
                                 <p>Quốc tịch<br/>
@@ -62,6 +67,7 @@ function Booking_Detail() {
                         </tr>
                     </table>
                 </form>
+                })}
                 <br/><br/>
                 <div class="bookconfirm">
                     <a href="#" onClick={() => setTiep(true)}>Tiếp tục</a>

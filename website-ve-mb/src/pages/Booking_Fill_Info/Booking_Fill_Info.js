@@ -8,25 +8,26 @@ function Booking_Fill_Info() {
     let flightInfo = JSON.parse(localStorage.getItem("SUMMARY_INFO"));
     let searchInfo = JSON.parse(localStorage.getItem("SEARCH_INFO"));
 
+    const [redirect, setRedirect] = useState(false);
     const clientArray = [];
 
     
-   function handleRedirect(e){
-        e.preventDefault();
+    if(redirect){
         return <Navigate to={"/booking-detail"} replace/>
    }
-   function addItems(){
+   function addItems(e){
         const forms = document.querySelectorAll("form");
         const output = [];
+        e.preventDefault();
         forms.forEach(form => {
             output.push({
-                form: form.dataset.category,
                 inputData: Object.fromEntries(new FormData(form)),
             });
         });
-    
-        console.log("data", output);
-   }
+        localStorage.setItem("CLIENT_INFO", JSON.stringify(output));
+        setRedirect(true);
+        console.log("data", JSON.stringify(output));}
+   
   return (
     <div>
     <Header/>
@@ -88,9 +89,9 @@ function Booking_Fill_Info() {
                                 <br/><label for="xungnhat">Danh xưng</label>
                                 <select id="xungnhat" name="xung">
                                     <option value="null"></option>
-                                    <option value="ong"> Ông </option>
-                                    <option value="ba"> Bà </option>
-                                    <option value="be"> Bé </option>
+                                    <option value="Ông"> Ông </option>
+                                    <option value="Bà"> Bà </option>
+                                    <option value="Bé"> Bé </option>
                                 </select>
                             </td>
                         </tr>
@@ -109,7 +110,7 @@ function Booking_Fill_Info() {
                         <tr>
                             <td colSpan={2}>
                                 <label for="sinhnhat">Ngày sinh</label><br/>
-                                <input type="text" id="sinhnhat" name="sinh"/><br/>
+                                <input type="date" id="sinhnhat" name="sinh"/><br/>
                                 <p class="note">hành khách người lớn (trên 12 tuổi)</p>
                             </td>
                             <td>
@@ -132,9 +133,9 @@ function Booking_Fill_Info() {
                                 <br/><label for="xungnhat">Danh xưng</label>
                                 <select id="xungnhat" name="xung">
                                     <option value="null"></option>
-                                    <option value="ong"> Ông </option>
-                                    <option value="ba"> Bà </option>
-                                    <option value="be"> Bé </option>
+                                    <option value="Ông"> Ông </option>
+                                    <option value="Bà"> Bà </option>
+                                    <option value="Bé"> Bé </option>
                                 </select>
                             </td>
                         </tr>
@@ -153,8 +154,8 @@ function Booking_Fill_Info() {
                         <tr>
                             <td colSpan={2}>
                                 <label for="sinhnhat">Ngày sinh</label><br/>
-                                <input type="text" id="sinhnhat" name="sinh"/><br/>
-                                <p class="note">hành khách trẻ em (trên 2 tuổi)</p>
+                                <input type="date" id="sinhnhat" name="sinh"/><br/>
+                                <p class="date">hành khách trẻ em (trên 2 tuổi)</p>
                             </td>
                             <td>
                             </td>
@@ -175,9 +176,9 @@ function Booking_Fill_Info() {
                                 <br/><label for="xungnhat">Danh xưng</label>
                                 <select id="xungnhat" name="xung">
                                     <option value="null"></option>
-                                    <option value="ong"> Ông </option>
-                                    <option value="ba"> Bà </option>
-                                    <option value="be"> Bé </option>
+                                    <option value="Ông"> Ông </option>
+                                    <option value="Bà"> Bà </option>
+                                    <option value="Bé"> Bé </option>
                                 </select>
                             </td>
                         </tr>
@@ -196,7 +197,7 @@ function Booking_Fill_Info() {
                         <tr>
                             <td colSpan={2}>
                                 <label for="sinhnhat">Ngày sinh</label><br/>
-                                <input type="text" id="sinhnhat" name="sinh"/><br/>
+                                <input type="date" id="sinhnhat" name="sinh"/><br/>
                                 <p class="note">hành khách em bé (dưới 3 tuổi)</p>
                             </td>
                             <td>
@@ -206,13 +207,11 @@ function Booking_Fill_Info() {
                 </form>})}
                 <br/><br/>
                 <div class="bookconfirm">
-                    <a href="#" onClick={addItems()}>Tiếp tục</a>
+                    <a href="#" onClick={(e) => addItems(e)}>Tiếp tục</a>
                 </div>
             </div>
         <BookingRight/>
         </div>
     </div>
-  )
-}
-
+  )}
 export default Booking_Fill_Info
