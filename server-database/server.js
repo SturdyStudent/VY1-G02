@@ -1,4 +1,5 @@
  const partnerRoute = require('./routes/partnerRoute');
+ const customerRoute = require('./routes/customerRoute');
  const seatClassRoute = require('./routes/seatClassRoute');
  const express = require("express");
  const app = express();
@@ -9,6 +10,7 @@
  app.use(body_parser.urlencoded({ extended: true }));//dùng khi cần post dữ liệu dạng json
  app.use(cors());
  app.use("/api/partner", partnerRoute);
+ app.use("/api/customer", customerRoute);
  const PORT = process.env.PORT || 3001;
  app.listen(PORT, () => {
    console.log(`Server is flying on port ${PORT}.`);

@@ -108,6 +108,10 @@ body{
     text-align: center;
     text-decoration: none;
 }
+.bookconfirm a:hover{
+    background-color: #1398e5;
+    border-color: #1398e5;
+}
 
 .flightsimple{
     padding-top: 174px;

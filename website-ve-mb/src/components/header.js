@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from '../assets/images/traveloka_pic.png';
+import User from '../pages/User/User';
 import './header.css';
 
 function header() {
@@ -10,6 +11,7 @@ function header() {
             <div id="sub-header">
                 <img src={Logo} alt="" width="150px"/>
             </div>
+            <User></User>
         </div>
     </div>
   )
