@@ -1,0 +1,22 @@
+.sideBar{
+    background-color: #4E4E4E;
+    flex: 1;
+    height: calc(100vh - 38px);
+    position: sticky;
+    height: auto;
+}
+.sidebarListItem{
+    align-self: center;
+    padding: 10px;
+    padding-left: 30px;
+    cursor: pointer;
+    display: flex;
+    font-size: medium;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sidebarListItem.active, .sidebarListItem:hover{
+    background-color: #303030;
+}

@@ -29,7 +29,6 @@ body{
 }
 
 .booking form{
-    margin-bottom: 30px;
     padding: 15px;
     background-color: white;
     box-shadow: 3px 3px 7px gainsboro;
@@ -108,10 +107,6 @@ body{
     color: white;
     text-align: center;
     text-decoration: none;
-}
-.bookconfirm a:hover{
-    background-color: #1398e5;
-    border-color: #1398e5;
 }
 
 .flightsimple{

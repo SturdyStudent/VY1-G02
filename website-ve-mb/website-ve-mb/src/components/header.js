@@ -1,6 +1,5 @@
 import React from 'react';
 import Logo from '../assets/images/traveloka_pic.png';
-import User from '../pages/User/User';
 import './header.css';
 import {useNavigate} from "react-router-dom";
 import { useEffect } from 'react/cjs/react.production.min';
@@ -14,7 +13,6 @@ const Header = (prop) => {
             <div id="sub-header">
                 <img src={Logo} alt="" width="150px" onClick={()=> {Navigate("/")}}/>
             </div>
-            <User></User>
         </div>
     </div>
   )
