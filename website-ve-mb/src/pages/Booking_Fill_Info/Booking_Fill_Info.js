@@ -9,8 +9,6 @@ function Booking_Fill_Info() {
     let searchInfo = JSON.parse(localStorage.getItem("SEARCH_INFO"));
 
     const [redirect, setRedirect] = useState(false);
-    const clientArray = [];
-
     
     if(redirect){
         return <Navigate to={"/booking-detail"} replace/>

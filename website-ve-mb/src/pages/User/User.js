@@ -4,12 +4,14 @@ import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
+import {Navigate} from "react-router-dom";
 import '../../components/header.css';
 import './User.css';
 
 function User() {
 
     //login form
+    const [redirect, setRedirect] = useState(false);
     const [modal, setModal] = useState(false);
     const toggleLogin = () =>{
         setModal(!modal);
@@ -30,6 +32,10 @@ function User() {
         setValues({ ...values, [prop]: event.target.value });
     };
     
+    if(redirect){
+        window.location.href = "http://vy1-go1-profile-app-s3cic.ondigitalocean.app";
+    }
+
     return (
     <div class="loguser">
         <div class="loginarrow" onClick={toggleLogin}>
@@ -62,13 +68,13 @@ function User() {
                         </td>
                         <td>
                             Bạn chưa có tài khoản?
-                            <a href="#">Đăng ký</a>
+                            <a href="#" onClick={() => setRedirect(true)}>Đăng ký</a>
                         </td>
                     </tr>
                 </table>
             </div>
         )}
-        <button class="signinbttn">Đăng ký</button>
+        <button class="signinbttn" onClick={() => setRedirect(true)}>Đăng ký</button>
     </div>
   )
 }

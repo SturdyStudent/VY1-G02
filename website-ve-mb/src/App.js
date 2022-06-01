@@ -9,6 +9,7 @@ import PartnerLoginPage from './pages/PartnerLoginPage/PartnerLoginPage';
 import PartnerSignup from './pages/PartnerSignupPage/PartnerSignup';
 import PartnerApp from './PartnerApp';
 import Booking_Detail from './pages/Booking_Detail/Booking_Detail';
+import { Elements } from '@stripe/react-stripe-js';
 import Booking_Fill_Info from './pages/Booking_Fill_Info/Booking_Fill_Info';
 import Booking_Summary from './pages/Booking_Summary/Booking_Summary';
 import Product from './pages/product';

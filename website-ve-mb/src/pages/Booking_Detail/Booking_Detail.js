@@ -9,7 +9,9 @@ function Booking_Detail() {
     let summaryInfo = JSON.parse(localStorage.getItem("SUMMARY_INFO"));
     let searchInfo = JSON.parse(localStorage.getItem("SEARCH_INFO"));
     let clientInfo = localStorage.getItem("CLIENT_INFO");
+
     const clientData = JSON.parse(clientInfo);
+    
 
     if(tiep){
      return <Navigate to={"/booking-summary"} replace/>

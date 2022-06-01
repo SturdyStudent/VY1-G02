@@ -100,9 +100,8 @@
     margin-top: 10px;
     margin-bottom: 5px;
 }
-.payment-container-summary div:nth-child(10){
+.customer-info{
     padding: 10px;
-    margin-top: 10px;
     background-color: #f6f6f6;
     display: flex;
     justify-content: space-between;

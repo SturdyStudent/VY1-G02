@@ -15,6 +15,7 @@ import './PreBooking.css'
 
 function PreBooking() {
     const [redirect, setRedirect] = useState(false);
+    const [partners, setPartners] = useState();
     const [locations, setLocations] = useState(null);
     const [startLocation, setStartLocation] = useState("");
     const [endLocation, setEndLocation] = useState();
@@ -60,9 +61,7 @@ function PreBooking() {
         localStorage.setItem("TRANSFER_INFO", "nothing");
         return <Navigate to={"/booking-fill"} replace/>
     }
-    
     const totalPrice = flightInfo.GiaVe * searchInfo.NguoiLon + flightInfo.GiaVe * 75 /100 * searchInfo.TreEm + flightInfo.GiaVe * 25/100 * searchInfo.EmBe;
-    
 return (
     <div>
         <Header/>
@@ -136,15 +135,15 @@ return (
                         <hr/>
                         {searchInfo && <div className='prebooking-summary-adult prebooking-summary-item'>
                             <div>{partnerName} (Người lớn) x{searchInfo.NguoiLon}</div>
-                            <div>VNĐ {(flightInfo.GiaVe * searchInfo.NguoiLon).toLocaleString()}</div>
+                            <div>VNĐ {flightInfo.GiaVe * searchInfo.NguoiLon}</div>
                         </div>}
                         {searchInfo && <div className='prebooking-summary-adult prebooking-summary-item'>
                             <div>{partnerName} (Trẻ em) x{searchInfo.TreEm}</div>
-                            <div>VNĐ {(flightInfo.GiaVe * 75 / 100 * searchInfo.TreEm).toLocaleString()}</div>
+                            <div>VNĐ {flightInfo.GiaVe * 75 / 100 * searchInfo.TreEm}</div>
                         </div>}
                         {searchInfo && <div className='prebooking-summary-adult prebooking-summary-item'>
                             <div>{partnerName} (Em bé) x{searchInfo.EmBe}</div>
-                            <div>VNĐ {(flightInfo.GiaVe * 25 / 100 * searchInfo.EmBe).toLocaleString()}</div>
+                            <div>VNĐ {flightInfo.GiaVe * 25 / 100 * searchInfo.EmBe}</div>
                         </div>}
                         <div className='prebooking-summary-total-price prebooking-summary-item'>
                             <div>Gía bạn trả</div>

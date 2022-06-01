@@ -10,7 +10,6 @@ function PartnerSignup() {
 const [MaHangBay, setMaHangBay] = useState('');
 const [TenHangBay, setTenHangBay] = useState('');
 const [TenDangNhap, setTenDangNhap] = useState('');
-const [HinhAnhHangBay, setHInhAnhHangBay] = useState();
 const [MatKhau, setMatKhau] = useState('');
 const [SoHanhLi, setSoHanhLi] = useState();
 const [redirectHome,setRedirectHome] = useState(false);
