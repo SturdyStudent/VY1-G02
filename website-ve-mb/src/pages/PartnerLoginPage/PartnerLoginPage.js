@@ -53,7 +53,7 @@ function PartnerLoginPage() {
                     <input type="submit" value="Đăng nhập" name='submit' style={{"marginTop":"20px", "backgroundColor":"#FF5F1F",
                      "color":"white", "border":"none", "fontWeight":"bold","textAlign":"center"}} onClick={handleLogin}></input>
                 </form>
-                <p>Chưa có mật khẩu? <a class="register-link" href='' style={{"color":"blue"}}>Đăng kí ngay!</a></p>
+                <p>Chưa có mật khẩu <a class="register-link" href='http://webchuyenbayg02.com/partner-signup' style={{"color":"blue"}}>Đăng kí ngay!</a></p>
             </div>
        </div>
     </div>
